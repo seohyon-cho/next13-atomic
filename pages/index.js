@@ -2,10 +2,13 @@ import Head from 'next/head';
 import styles from './Home.module.scss';
 import clsx from 'clsx';
 import axios from 'axios';
+import Image from 'next/image';
 
 //https://www.themealdb.com
-export default function Home(props) {
-	console.log(props);
+export default function Home({ meals }) {
+	const newMeals = meals.slice(0, 6);
+	console.log(newMeals);
+
 	return (
 		<>
 			<Head>
@@ -16,7 +19,28 @@ export default function Home(props) {
 			</Head>
 
 			<main className={clsx(styles.main)}>
-				<h1>Main Page</h1>
+				<figure className='visual'>
+					<article className='bg'>
+						{newMeals.map((item) => (
+							<div key={item.idMeal} className='pic' style={{ position: 'relative', width: 400, height: 300 }}>
+								<Image
+									src={item.strMealThumb}
+									alt={item.strMeal}
+									priority
+									fill
+									quality={50}
+									style={{ objectFit: 'cover' }}
+								/>
+							</div>
+						))}
+					</article>
+
+					<article className='list'>
+						{newMeals.map((item) => (
+							<h2 key={item.idMeal}>{item.strMeal}</h2>
+						))}
+					</article>
+				</figure>
 			</main>
 		</>
 	);
@@ -29,6 +53,6 @@ export async function getStaticProps() {
 
 	return {
 		props: data,
-		revalidate: 10,
+		revalidate: 60 * 60 * 24,
 	};
 }
