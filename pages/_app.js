@@ -6,6 +6,7 @@ export default function App({ Component, pageProps }) {
 
 /*
   Atomic Design Pattern :컴포넌트를 원자처럼 최소단위로 쪼개서 재활용가능하게 처리
+  -- 단점 : 컴포넌트간에 의존성이 생김, 특정 원자단위의 컴포넌트에서 문제가 발생하면 상위컴포넌트까지 다 에러가 발생소지
   Atoms(원자)
   - 버튼, 메뉴, 제목, 글자, 폼요소, 썸네일
   Molecules(분자)
