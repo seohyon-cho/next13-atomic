@@ -25,7 +25,7 @@ export default function Home(props) {
 export async function getStaticProps() {
 	//props로 데이터 넘길때에는 data안쪽의 값까지 뽑아낸다음에 전달
 	const { data } = await axios.get('/filter.php?c=Seafood');
-	console.log('data fetching on Server', response.data);
+	console.log('data fetching on Server', data);
 
 	return {
 		props: data,
