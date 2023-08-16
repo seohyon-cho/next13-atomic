@@ -23,7 +23,8 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-	const response = await axios.get('www.themealdb.com/api/json/v1/1/filter.php?c=Seafood');
+	const response = await axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood');
+	console.log('data fetching on Server', response);
 
 	return {
 		props: response,
