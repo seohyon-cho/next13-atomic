@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import clsx from 'clsx';
-import styles from './Visual.module.scss';
+import styles from './Pic.module.scss';
 import Link from 'next/link';
 
-export function Visual({
+export function Pic({
 	imgSrc,
 	style,
 	imgTxt,
 	children,
-	//해당 아톰 컴포넌트가 호출되는 위치에서의 className props를 내부로 전달
 	className,
 	priority = false,
 	url,
