@@ -25,20 +25,20 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={clsx(styles.main)}>
-				<Title
+				{/* <Title
 					url={'/abc'}
-					className={styles.txt}
-					//style에 컬러값 적용시 hover값까지 같이 스크립트로 덮어쓰기 되므로
-					//아예 hover색상같이 같이 그룹으로 전달
-					//style객체로 컬러값 자체를 전달하지 않으면
-					//module.sass에 있는 기본 호버 스타일 적용
-					//style={{ color: 'violet', hoverColor: 'aqua' }}
+					className={styles.txt}			
 					type={'logo'}
 				>
 					Hello
 				</Title>
 
-				<Title type={'slogan'}>Slogan</Title>
+				<Title type={'slogan'} tag={'h2'}>
+					Slogan
+				</Title> */}
+				<Title tag={'h3'} type={'slogan'}>
+					Hello
+				</Title>
 			</main>
 		</>
 	);
