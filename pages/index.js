@@ -36,7 +36,12 @@ export default function Home({ meals }) {
 				<Title type={'slogan'} tag={'h2'}>
 					Slogan
 				</Title> */}
-				<Title tag={'h3'} type={'slogan'}>
+				<Title
+					tag={'h3'}
+					url={'/abc'}
+					type={'slogan'}
+					style={{ color: 'aqua', hoverColor: 'hotpink' }}
+				>
 					Hello
 				</Title>
 			</main>
