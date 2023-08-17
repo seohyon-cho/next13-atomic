@@ -31,9 +31,7 @@ export default function Home({ meals }) {
 					<Visual
 						imgSrc={meals[0].strMealThumb}
 						className={styles.customPic}
-					>
-						<span>Hello</span>
-					</Visual>
+					></Visual>
 				</div>
 			</main>
 		</>
