@@ -1,8 +1,5 @@
 import Head from 'next/head';
-import styles from './Home.module.scss';
-import clsx from 'clsx';
 import axios from 'axios';
-import Header from '@/components/organisms/Header';
 
 export default function Home({ meals, category }) {
 	//idMeal
@@ -25,10 +22,6 @@ export default function Home({ meals, category }) {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-
-			<main className={clsx(styles.main)}>
-				<Header />
-			</main>
 		</>
 	);
 }
