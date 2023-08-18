@@ -6,11 +6,13 @@ import Title from '@/components/atoms/text/Title';
 import Text from '@/components/atoms/text/Text';
 import { Pic } from '@/components/atoms/pic/Pic';
 
-export default function Home({ meals }) {
+export default function Home({ meals, category }) {
 	//idMeal
 	//strMeal
 	//strMealThumb
+	console.log(category);
 	console.log(meals);
+
 	return (
 		<>
 			<Head>
@@ -47,7 +49,7 @@ export async function getStaticProps() {
 	);
 
 	return {
-		props: data,
+		props: { ...data, category: newList[randomNum] },
 		revalidate: 10,
 	};
 }
