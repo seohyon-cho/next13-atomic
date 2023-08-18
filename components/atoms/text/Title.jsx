@@ -51,7 +51,7 @@ function Title({ children, url, style, className, type }) {
 	);
 }
 */
-//React.createElement(elementType:string, props:object, children:JSX Node)
+//React.createElement(elementType:string, props:object, children:React Node)
 function Title({ children, url, style, className, type, tag }) {
 	return React.createElement(
 		tag, //elementType
@@ -68,7 +68,7 @@ function Title({ children, url, style, className, type, tag }) {
 			onMouseEnter: (e) => (e.target.style.color = style?.hoverColor),
 			onMouseLeave: (e) => (e.target.style.color = style?.color),
 		},
-		//JSX Node
+		//React Node
 		url
 			? React.createElement(
 					Link,
