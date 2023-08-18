@@ -26,21 +26,28 @@ export default function Home({ meals }) {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main className={clsx(styles.main)}>
-				<div className={clsx(styles.picFrame)}>
-					<Pic imgSrc={meals[0].strMealThumb} />
-				</div>
-			</main>
+			<main className={clsx(styles.main)}></main>
 		</>
 	);
 }
 
 export async function getStaticProps() {
-	const { data } = await axios.get('/filter.php?c=Seafood');
-	console.log('data fetching on Server', data);
+	const list = [];
+	const { data: obj } = await axios.get('/categories.php');
+	const items = obj.categories;
+	items.forEach((el) => list.push(el.strCategory));
+	const newList = list.filter(
+		(el) => el !== 'Goat' && el !== 'Vegan' && el !== 'Starter'
+	);
+
+	const randomNum = Math.floor(Math.random() * newList.length);
+
+	const { data } = await axios.get(
+		`/filter.php?c=${newList[randomNum]}`
+	);
 
 	return {
 		props: data,
-		revalidate: 60 * 60 * 24,
+		revalidate: 10,
 	};
 }
