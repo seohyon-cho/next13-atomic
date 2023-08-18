@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './Text.module.scss';
+import styles from './Text.module.scss'; //css모듈
 import clsx from 'clsx';
 import { Nanum_Myeongjo, Orbitron } from 'next/font/google';
 
@@ -18,15 +18,16 @@ const orbitron = Orbitron({
 });
 
 function Text({ children, url, style, className, type, tag = 'p' }) {
+	//컴포넌트 이름, 디폴트 태그명
 	return React.createElement(
 		tag,
 		{
 			className: clsx(
-				styles.txt,
+				styles.txt, //클래스명
 				className,
 				nanum.variable,
 				orbitron.variable,
-				styles[`tit_${type}`]
+				styles[`txt_${type}`] //추가 클래스명
 			),
 			style: url ? style : { ...style, transitionDuration: '0.5s' },
 			onMouseEnter: (e) => (e.target.style.color = style?.hoverColor),
@@ -45,4 +46,4 @@ function Text({ children, url, style, className, type, tag = 'p' }) {
 	);
 }
 
-export default Text;
+export default Text; //컴포넌트명
