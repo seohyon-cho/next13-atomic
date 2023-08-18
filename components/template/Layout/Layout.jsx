@@ -17,9 +17,10 @@ function Layout({ children }) {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main className={clsx(styles.main)}>
+			<main className={clsx(styles.layout)}>
 				<Header />
-				{children}
+
+				<section className={clsx(styles.content)}>{children}</section>
 			</main>
 		</>
 	);
