@@ -30,7 +30,7 @@ export default function Home({ meals, category }) {
 			</Head>
 
 			<main className={clsx(styles.main)}>
-				<Navbar names={['Recipe', 'Favorait']} />
+				<Navbar names={['Find Recipe', 'My Favorait']} gap={20} />
 			</main>
 		</>
 	);
