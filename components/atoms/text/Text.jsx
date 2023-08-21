@@ -22,7 +22,7 @@ const orbitron = Orbitron({
 	adjustFontFallback: false,
 });
 
-function Text({ children, url, style, className, type, tag = 'p', isOn = false }) {
+export function Text({ children, url, style, className, type, tag = 'p', isOn = false }) {
 	const router = useRouter();
 	const currentPath = router.pathname;
 
@@ -45,5 +45,3 @@ function Text({ children, url, style, className, type, tag = 'p', isOn = false }
 		url ? React.createElement(Link, { href: url, style: { transitionDuration: '0.5s' } }, children) : children
 	);
 }
-
-export default Text; //컴포넌트명

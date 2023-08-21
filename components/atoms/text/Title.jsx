@@ -21,7 +21,7 @@ const orbitron = Orbitron({
 	adjustFontFallback: false,
 });
 
-function Title({ children, url, style, className, type, tag = 'h1' }) {
+export function Title({ children, url, style, className, type, tag = 'h1' }) {
 	return React.createElement(
 		tag,
 		{
@@ -34,5 +34,3 @@ function Title({ children, url, style, className, type, tag = 'h1' }) {
 		url ? React.createElement(Link, { href: url, style: { transitionDuration: '0.5s' } }, children) : children
 	);
 }
-
-export default Title;
