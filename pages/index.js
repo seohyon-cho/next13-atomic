@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import axios from 'axios';
+import Swiper from '@/components/organisms/Swiper/Swiper';
 
 export default function Home({ meals, category }) {
 	//idMeal
@@ -14,7 +15,7 @@ export default function Home({ meals, category }) {
 				<title>Main Page</title>
 			</Head>
 
-			<h2>Main Page</h2>
+			<Swiper recipe={meals} category={category} />
 			{/* 
 				Swiper 컴포넌트 작업 계획
 				Visual - Organism
