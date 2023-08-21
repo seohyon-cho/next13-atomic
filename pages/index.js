@@ -5,8 +5,8 @@ export default function Home({ meals, category }) {
 	//idMeal
 	//strMeal
 	//strMealThumb
-	console.log(category);
-	console.log(meals);
+	//console.log(category);
+	//console.log(meals);
 
 	return (
 		<>
@@ -27,7 +27,6 @@ export async function getStaticProps() {
 	const newList = list.filter((el) => el !== 'Goat' && el !== 'Vegan' && el !== 'Starter');
 
 	const randomNum = Math.floor(Math.random() * newList.length);
-
 	const { data } = await axios.get(`/filter.php?c=${newList[randomNum]}`);
 
 	return {

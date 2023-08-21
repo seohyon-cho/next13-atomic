@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './Text.module.scss'; //css모듈
+import styles from './Text.module.scss';
 import clsx from 'clsx';
 import { Nanum_Myeongjo, Orbitron } from 'next/font/google';
 import { useRouter } from 'next/router';
@@ -10,12 +10,16 @@ const nanum = Nanum_Myeongjo({
 	weight: ['400', '700'],
 	preload: true,
 	variable: '--font-nanum',
+	display: 'swap',
+	adjustFontFallback: false,
 });
 const orbitron = Orbitron({
 	subsets: ['latin'],
 	weight: ['400', '700'],
 	preload: true,
 	variable: '--font-orbitron',
+	display: 'swap',
+	adjustFontFallback: false,
 });
 
 function Text({ children, url, style, className, type, tag = 'p', isOn = false }) {

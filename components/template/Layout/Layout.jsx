@@ -13,7 +13,6 @@ function Layout({ children }) {
 			</Head>
 			<main className={clsx(styles.layout)}>
 				<Header />
-
 				<section className={clsx(styles.content)}>{children}</section>
 			</main>
 		</>
