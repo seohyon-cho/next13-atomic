@@ -6,6 +6,7 @@ import SwiperCore, { Autoplay } from 'swiper';
 import { useState } from 'react';
 import 'swiper/css';
 import Slider from '@/components/molecules/Slider/Slider';
+import Counter from '@/components/molecules/Counter/Counter';
 
 SwiperCore.use([Autoplay]);
 
@@ -17,6 +18,7 @@ function SwiperWrap({ recipe, category }) {
 			<Title style={{ position: 'absolute', top: '20vh', left: '10vw', fontSize: 50, color: 'orange' }}>{category}</Title>
 
 			<Slider data={recipe} index={Index} />
+			<Counter index={Index} len={recipe.length} />
 
 			<Swiper
 				className={clsx(styles.swiper)}
