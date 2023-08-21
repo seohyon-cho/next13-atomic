@@ -14,7 +14,9 @@ function SwiperWrap({ recipe, category }) {
 		//strMeal
 		//strMealThumb
 		<figure className={clsx(styles.visual)}>
-			<Swiper className={clsx(styles.swiper)}>
+			<Title style={{ position: 'absolute', top: '20vh', left: '10vw', fontSize: 50, color: 'orange' }}>{category}</Title>
+
+			<Swiper className={clsx(styles.swiper)} loop={true} grabCursor={true} slidesPerView={3} spaceBetween={100} centeredSlides={true}>
 				{recipe.map((item) => (
 					<SwiperSlide key={item.idMeal} className={clsx(styles.swiperSlide)}>
 						<div>
