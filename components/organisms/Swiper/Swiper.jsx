@@ -14,11 +14,13 @@ function SwiperWrap({ recipe, category }) {
 		//strMeal
 		//strMealThumb
 		<figure className={clsx(styles.visual)}>
-			<Swiper>
+			<Swiper className={clsx(styles.swiper)}>
 				{recipe.map((item) => (
-					<SwiperSlide key={item.idMeal}>
+					<SwiperSlide key={item.idMeal} className={clsx(styles.swiperSlide)}>
 						<div>
-							<Title>{item.strMeal || ''}</Title>
+							<Title tag={'h3'} url={'/'} type={'slogan'}>
+								{item.strMeal}
+							</Title>
 						</div>
 					</SwiperSlide>
 				))}
