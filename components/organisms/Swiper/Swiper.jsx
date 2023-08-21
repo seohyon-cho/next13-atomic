@@ -7,23 +7,16 @@ import { useState } from 'react';
 import 'swiper/css';
 import Slider from '@/components/molecules/Slider/Slider';
 
-//Next에서는 Autopaly, Pagination, Navigation기능을 활성화하기 위해 SwiperCore.use 사용
 SwiperCore.use([Autoplay]);
 
-//npm i swiper@9
 function SwiperWrap({ recipe, category }) {
-	console.log('recipe', recipe);
-	console.log('category', category);
 	const [Index, setIndex] = useState(0);
-	console.log(Index);
+
 	return (
-		//idMeal
-		//strMeal
-		//strMealThumb
 		<figure className={clsx(styles.visual)}>
 			<Title style={{ position: 'absolute', top: '20vh', left: '10vw', fontSize: 50, color: 'orange' }}>{category}</Title>
 
-			<Slider data={recipe} />
+			<Slider data={recipe} index={Index} />
 
 			<Swiper
 				className={clsx(styles.swiper)}
