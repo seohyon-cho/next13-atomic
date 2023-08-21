@@ -46,7 +46,6 @@ function SwiperWrap({ recipe, category }) {
 					//해당 함수에는 파라미터로 현재 컴포넌트 요소가 활성화되어있는 구분할 수 있는 객체가 전달
 					<SwiperSlide key={item.idMeal} className={clsx(styles.swiperSlide)}>
 						{({ isActive }) => {
-							console.log(props);
 							return (
 								<div className={clsx(isActive ? styles.on : '')}>
 									<Title tag={'h3'} url={'/'} type={'slogan'}>
