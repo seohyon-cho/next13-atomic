@@ -36,6 +36,6 @@ export async function getStaticProps() {
 
 	return {
 		props: { ...data, category: newList[randomNum] },
-		revalidate: 10,
+		revalidate: 60 * 60 * 24,
 	};
 }

@@ -43,9 +43,10 @@ function SwiperWrap({ recipe, category }) {
 					//SwiperSlide 컴포넌트안쪽에서 자동으로 JSX리턴하는 함수 호출 가능
 					//해당 함수에는 파라미터로 현재 컴포넌트 요소가 활성화되어있는 구분할 수 있는 객체가 전달
 					<SwiperSlide key={item.idMeal} className={clsx(styles.swiperSlide)}>
-						{({ isActive }) => {
+						{({ isActive, isPrev, isNext }) => {
+							//isActive , isPrev, isNext, isVisible
 							return (
-								<div className={clsx(isActive ? styles.on : '')}>
+								<div className={clsx(isActive && styles.on, isPrev && styles.prev, isNext && styles.next)}>
 									{/* 다이나믹 라우팅으로 기본 id값 전달외에 ?뒤에 쿼리 스트링값을 전달하면 해당 값을 다이나믹 라우팅이 적용되는 페이지 안에서 비구조화할당으로 받음 */}
 									<Title tag={'h3'} url={`/detail/${item.idMeal}?name=${item.strMeal}&url=${item.strMealThumb}`} type={'slogan'}>
 										{item.strMeal.length > 25 ? item.strMeal.substr(0, 25) : item.strMeal}
