@@ -25,7 +25,8 @@ export default function Recipe({ categories }) {
 			</Head>
 
 			<section className={styles.recipePage}>
-				<Category items={categories} onClick={setSelected} />
+				{/* 버튼활성화 순서1- category로 활성화여부를 구분할수 있는 정보값을 active라는 props로 전달 */}
+				<Category items={categories} onClick={setSelected} active={DebouncedSelected} />
 
 				<Title type={'slogan'} className={clsx(styles.titCategory)}>
 					{DebouncedSelected}
