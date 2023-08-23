@@ -3,8 +3,6 @@ import axios from 'axios';
 
 const getRecipeByCategory = async ({ queryKey }) => {
 	const { data } = await axios.get(`/filter.php?c=${queryKey[1]}`);
-	//해당 커스텀훅으로 호출되는 fetching함수가 만약 컴포넌트 마운트되자마자 호출된다면
-	//data값 자체가 없기 때문에 meals에서 undefined오류 발생을 피하기 위함
 	return data?.meals || [];
 };
 
@@ -14,5 +12,7 @@ export const useRecipeByCategory = (SelectedCategory) => {
 		refetchOnWindowFocus: false,
 		cacheTime: 0,
 		staleTime: 0,
+		retry: 3, //데이터 요청 시도 횟수(디폴트3, 네트워트상황이 안좋을때 재시도횟수 늘림)
+		enabled: true, //useQuery의 호출 유무 true(실행, 디폴트값) false(실행안함)
 	});
 };
