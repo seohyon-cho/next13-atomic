@@ -6,13 +6,13 @@ const getRecipeByCategory = async ({ queryKey }) => {
 	return data?.meals || [];
 };
 
-export const useRecipeByCategory = (SelectedCategory) => {
-	return useQuery(['RecipeByCategory', SelectedCategory], getRecipeByCategory, {
+export const useRecipeByCategory = (DebounceCategory, DebounceSearch) => {
+	return useQuery(['RecipeByCategory', DebounceCategory], getRecipeByCategory, {
 		refetchOnMount: false,
 		refetchOnWindowFocus: false,
 		cacheTime: 1000 * 60 * 60 * 24,
 		staleTime: 1000 * 60 * 60 * 24,
-		enabled: SelectedCategory !== undefined,
+		enabled: DebounceSearch === '',
 	});
 };
 
@@ -21,12 +21,12 @@ const getRecipeBySearch = async ({ queryKey }) => {
 	return data?.meals || [];
 };
 
-export const useRecipeBySearch = (SelectedSearch) => {
-	return useQuery(['RecipeBySearch', SelectedSearch], getRecipeBySearch, {
+export const useRecipeBySearch = (DobounceSearch) => {
+	return useQuery(['RecipeBySearch', DobounceSearch], getRecipeBySearch, {
 		refetchOnMount: false,
 		refetchOnWindowFocus: false,
 		cacheTime: 1000 * 60 * 60 * 24,
 		staleTime: 1000 * 60 * 60 * 24,
-		enabled: SelectedSearch !== '', //인수로 들어온 인풋이 빈 문자열이면 실행불가
+		enabled: DobounceSearch !== '', //인수로 들어온 인풋이 빈 문자열이면 실행불가
 	});
 };
