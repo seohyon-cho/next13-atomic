@@ -5,7 +5,7 @@ export const keepStyle = (delay) => {
 		const copies = [...nodes].map((el) => el.cloneNode(true));
 
 		for (let copy of copies) {
-			copy.removeAttribute('data-n-p');
+			copy.removeAttribute('data-n-g');
 			copy.removeAttribute('data-n-href');
 			document.head.appendChild(copy);
 		}
