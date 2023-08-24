@@ -3,7 +3,7 @@ import styles from './style.module.scss';
 import axios from 'axios';
 import Category from '@/components/molecules/Category/Category';
 import { useRecipeByCategory } from '@/hooks/useRecipe';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import Card from '@/components/molecules/Card/Card';
 import { Title } from '@/components/atoms/text/Title';
@@ -15,7 +15,12 @@ export default function Recipe({ categories }) {
 	const [Search, setSearch] = useState('');
 
 	const DebouncedSelected = useDebounce(Selected);
+	const DebouncedSearch = useDebounce(Search);
 	const { data: dataByCategory, isSuccess: isCategory } = useRecipeByCategory(DebouncedSelected);
+
+	useEffect(() => {
+		console.log(DebouncedSearch);
+	}, [DebouncedSearch]);
 
 	return (
 		<>
