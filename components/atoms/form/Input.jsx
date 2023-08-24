@@ -8,7 +8,7 @@ function Input({ type = 'text', placeholder = 'text', onChange, value, style, cl
 			className={clsx(styles.input, className)}
 			placeholder={placeholder}
 			value={value}
-			onChange={onChange}
+			onChange={(e) => onChange(e.target.value)}
 			style={style}
 		/>
 	);

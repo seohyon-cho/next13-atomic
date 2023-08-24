@@ -12,10 +12,8 @@ import SearchBar from '@/components/molecules/SearchBar/SearchBar';
 
 export default function Recipe({ categories }) {
 	const [Selected, setSelected] = useState(categories[0].strCategory);
-	//const { data, isSuccess } = useRecipeByCategory(Selected);
+	const [Search, setSearch] = useState('');
 
-	//useDebounce는 컴포넌트의 재랜더링 자체를 막는 것이 아닌
-	//특정 State가 변경될때마다 실행되는 무거운 함수의 호출 자체를 Debouncing하기 위함
 	const DebouncedSelected = useDebounce(Selected);
 	const { data: dataByCategory, isSuccess: isCategory } = useRecipeByCategory(DebouncedSelected);
 
@@ -26,14 +24,13 @@ export default function Recipe({ categories }) {
 			</Head>
 
 			<section className={styles.recipePage}>
-				{/* 버튼활성화 순서1- category로 활성화여부를 구분할수 있는 정보값을 active라는 props로 전달 */}
 				<Category items={categories} onClick={setSelected} active={DebouncedSelected} />
 
 				<Title type={'slogan'} className={clsx(styles.titCategory)}>
 					{DebouncedSelected}
 				</Title>
 
-				<SearchBar isBtn={false} placeholder={'search'} />
+				<SearchBar inputType={'text'} isBtn={false} placeholder={'search'} value={Search} onChange={setSearch} />
 
 				<div className={clsx(styles.listFrame)}>
 					{isCategory &&
