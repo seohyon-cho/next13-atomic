@@ -21,11 +21,14 @@ export default function Recipe({ categories }) {
 
 	useEffect(() => {
 		//디바운싱되는 search, selected값이 변경이 될때마다 실행되는 useEffect
-		//Search값이 있다면 기존의 카테고리 값을 비워야되므로 setSelected빈문자값을 쿼리보내서 빈배열을 다시 반환, 결과적으로 해당데이터는 화면에서 사라짐
+		//Search값이 있다면 기존의 카테고리 값을 비워야되므로 setSelected로 빈빈문자열의 state값을 쿼리로 보내서 빈배열을 다시 반환, 결과적으로 해당데이터는 화면에서 사라짐
 		if (DebouncedSearch) {
 			setSelected('');
+		} else {
+			setSearch('');
+			!DebouncedSelected && setSelected(categories[0].strCategory);
 		}
-	}, [DebouncedSearch, DebouncedSelected]);
+	}, [DebouncedSearch, DebouncedSelected, categories]);
 
 	return (
 		<>
