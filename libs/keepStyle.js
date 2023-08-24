@@ -1,5 +1,5 @@
 import Router from 'next/router';
-export const KeepStyle = (delay) => {
+export const keepStyle = (delay) => {
 	Router.events.on('beforeHistoryChange', () => {
 		const nodes = document.querySelectorAll('link[rel=stylesheet], style:not([media=x])');
 		const copies = [...nodes].map((el) => el.cloneNode(true));
