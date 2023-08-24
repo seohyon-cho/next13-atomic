@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from './style.module.scss';
 import axios from 'axios';
 import Category from '@/components/molecules/Category/Category';
-import { useRecipeByCategory } from '@/hooks/useRecipe';
+import { useRecipeByCategory, useRecipeBySearch } from '@/hooks/useRecipe';
 import { useState, useEffect } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import Card from '@/components/molecules/Card/Card';
@@ -17,6 +17,7 @@ export default function Recipe({ categories }) {
 	const DebouncedSelected = useDebounce(Selected);
 	const DebouncedSearch = useDebounce(Search);
 	const { data: dataByCategory, isSuccess: isCategory } = useRecipeByCategory(DebouncedSelected);
+	const { data: dataBySearch, isSuccess: isSearch } = useRecipeBySearch(DebouncedSearch);
 
 	useEffect(() => {
 		console.log(DebouncedSearch);
@@ -44,7 +45,17 @@ export default function Recipe({ categories }) {
 								key={el.idMeal}
 								imgSrc={el.strMealThumb}
 								url={`/find-recipe/${el.idMeal}`}
-								txt={el.strMeal}
+								txt={`category - ${el.strMeal}`}
+								className={clsx(styles.card)}
+							/>
+						))}
+					{isSearch &&
+						dataBySearch.map((el) => (
+							<Card
+								key={el.idMeal}
+								imgSrc={el.strMealThumb}
+								url={`/find-recipe/${el.idMeal}`}
+								txt={`search - ${el.strMeal}`}
 								className={clsx(styles.card)}
 							/>
 						))}
