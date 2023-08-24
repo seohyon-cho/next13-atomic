@@ -1,7 +1,7 @@
 import styles from './Input.module.scss';
 import clsx from 'clsx';
 
-function Input({ type = 'text', placeholder = 'text', onChange, value, style = { style }, className }) {
+function Input({ type = 'text', placeholder = 'text', onChange, value, style, className }) {
 	return (
 		<input
 			type={type}

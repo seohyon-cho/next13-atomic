@@ -8,6 +8,7 @@ import { useDebounce } from '@/hooks/useDebounce';
 import Card from '@/components/molecules/Card/Card';
 import { Title } from '@/components/atoms/text/Title';
 import clsx from 'clsx';
+import SearchBar from '@/components/molecules/SearchBar/SearchBar';
 
 export default function Recipe({ categories }) {
 	const [Selected, setSelected] = useState(categories[0].strCategory);
@@ -31,6 +32,8 @@ export default function Recipe({ categories }) {
 				<Title type={'slogan'} className={clsx(styles.titCategory)}>
 					{DebouncedSelected}
 				</Title>
+
+				<SearchBar isBtn={false} placeholder={'search'} />
 
 				<div className={clsx(styles.listFrame)}>
 					{isCategory &&
