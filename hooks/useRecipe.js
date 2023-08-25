@@ -34,3 +34,17 @@ export const useRecipeBySearch = (DobounceSearch) => {
 		enabled: DobounceSearch !== '', //인수로 들어온 인풋이 빈 문자열이면 실행불가
 	});
 };
+
+//아이디로 상세 레시피 fetching
+const getRecipeById = async ({ queryKey }) => {
+	const { data } = await axios.get(`/lookup.php?i=${queryKey[1]}`);
+	return data?.meals || [];
+};
+export const useRecipeById = (DebounceId) => {
+	return useQuery(['RecipeById', DebounceId], getRecipeById, {
+		refetchOnMount: false,
+		refetchOnWindowFocus: false,
+		cacheTime: 1000 * 60 * 60 * 24,
+		staleTime: 1000 * 60 * 60 * 24,
+	});
+};
