@@ -11,13 +11,11 @@ import { useState, useEffect } from 'react';
 function Detail() {
 	const router = useRouter();
 	const { id } = router.query;
-	const { data, isSuccess } = useRecipeById(id);
-	console.log(isSuccess && data);
+	const { data } = useRecipeById(id);
 	const [TableData, setTableData] = useState([]);
 
 	//무한루프에 빠지지 않게 하기위해서 해당 해당 컴포넌트에서 data가 받아졌을떄 한번한 호출해서 State에 옮겨담기
 	useEffect(() => {
-		console.log(data);
 		if (data) {
 			const keys = Object.keys(data);
 			//레시피 정보 객체에서 strIngredient문자로 시작하는 키값만 배열로 뽑음
@@ -30,7 +28,6 @@ function Detail() {
 				ingredient: data[key],
 				measuer: data[`strMeasure${idx + 1}`],
 			}));
-			console.log(ingredients);
 			setTableData(ingredients);
 		}
 	}, [data]);
@@ -38,23 +35,25 @@ function Detail() {
 	return (
 		<section className={clsx(styles.detail)}>
 			<BounceLoader
-				loading={!isSuccess}
+				loading={!data}
 				cssOverride={{ position: 'absolute', top: 300, left: '50%', transform: 'translateX(-50%)' }}
 				color={'orange'}
 				size={100}
 			/>
-			{isSuccess && (
+			{data && (
+				//다이나믹 라우터에서 스타일이 날라가는것이 아닌 csr방식에서 컴포넌트 언마운트시 데이터가 사라져서
+				//컨텐츠가 출력이 안되던 문제
+				//해결방법 data가 없을때는 로딩바를 대신 출력
+				//isSuccess는 처음 fetching이후 계속 true값이므로 활용불가
 				<>
 					<Title type={'slogan'}>{data.strMeal}</Title>
 
 					<div className={clsx(styles.picFrame)}>
 						<Pic imgSrc={data.strMealThumb} />
 					</div>
+					<Table data={TableData} title={data.strMeal} />
 				</>
 			)}
-
-			{/* 위에서 State에 옮겨놓은 데이터를 컴포넌트에 전달 */}
-			<Table data={TableData} title={data?.strMeal} />
 		</section>
 	);
 }
