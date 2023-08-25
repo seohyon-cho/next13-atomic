@@ -26,6 +26,8 @@ export default function Recipe({ categories }) {
 	const { data: dataByCategory, isSuccess: isCategory } = useRecipeByCategory(DebouncedSelected, DebouncedSearch);
 	const { data: dataBySearch, isSuccess: isSearch } = useRecipeBySearch(DebouncedSearch);
 
+	console.log('isCategory', isCategory, 'isSearch', isSearch);
+
 	//카테고리 버튼을 클릭할때 실행되는 함수
 	//Selected값이 변경되고 새롭게 쿼리 요청을 보내는 조건이 Search값이 비어있어야 가능하므로
 	//일단 Search값을 비워놓고 State변경요청 보내는 함수
@@ -89,9 +91,9 @@ export default function Recipe({ categories }) {
 								className={clsx(styles.card)}
 							/>
 						))}
-					{/* Category가 없고, Search있고, Search배열 값이 0일때 */}
-					{!isCategory && isSearch && dataBySearch.length === 0 && (
-						<Text>
+					{/* Search있고, Search배열 값이 0일때 */}
+					{isSearch && dataBySearch.length === 0 && (
+						<Text style={{ fontSize: 22, marginTop: 80, color: 'orange' }}>
 							No Results!! <br /> Try another Recipe Name.
 						</Text>
 					)}
