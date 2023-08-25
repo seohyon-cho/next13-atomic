@@ -17,6 +17,7 @@ function Detail() {
 
 	//무한루프에 빠지지 않게 하기위해서 해당 해당 컴포넌트에서 data가 받아졌을떄 한번한 호출해서 State에 옮겨담기
 	useEffect(() => {
+		console.log(data);
 		if (data) {
 			const keys = Object.keys(data);
 			//레시피 정보 객체에서 strIngredient문자로 시작하는 키값만 배열로 뽑음
@@ -53,7 +54,7 @@ function Detail() {
 			)}
 
 			{/* 위에서 State에 옮겨놓은 데이터를 컴포넌트에 전달 */}
-			<Table data={TableData} />
+			<Table data={TableData} title={data?.strMeal} />
 		</section>
 	);
 }
