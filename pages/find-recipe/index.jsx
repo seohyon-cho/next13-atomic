@@ -9,6 +9,7 @@ import Card from '@/components/molecules/Card/Card';
 import { Title } from '@/components/atoms/text/Title';
 import clsx from 'clsx';
 import SearchBar from '@/components/molecules/SearchBar/SearchBar';
+import { Text } from '@/components/atoms/text/Text';
 
 export default function Recipe({ categories }) {
 	//Selected, Search 값이 변경되면 컴포넌트는 재호출되며
@@ -57,14 +58,16 @@ export default function Recipe({ categories }) {
 				{/* 카테고리 버튼 클릭할때마다 실행할 핸들러함수를 onClick props으로  전달 */}
 				<Category items={categories} onClick={handleClickCategory} active={DebouncedSelected} />
 
+				{/* 현재 출력되는 값에 따라 제목 변경 */}
 				<Title type={'slogan'} className={clsx(styles.titCategory)}>
-					{DebouncedSelected}
+					{DebouncedSelected ? DebouncedSelected : `Result: ${DebouncedSearch}`}
 				</Title>
 
-				{/* 검색창에 onChange가 발생할때마다 실행할 함수를 onChange props로 전달 */}
+				{/* 검색창에 onChange가 발생할때마다 실행할 함수를 onChange props로 전달, value값도 같이 전달 */}
 				<SearchBar inputType={'text'} isBtn={false} placeholder={'search'} value={Search} onChange={setSearch} />
 
 				<div className={clsx(styles.listFrame)}>
+					{/* Category 데이터가 있을때 */}
 					{isCategory &&
 						dataByCategory.map((el) => (
 							<Card
@@ -75,6 +78,7 @@ export default function Recipe({ categories }) {
 								className={clsx(styles.card)}
 							/>
 						))}
+					{/* Search 데이터가 있을때 */}
 					{isSearch &&
 						dataBySearch.map((el) => (
 							<Card
@@ -85,6 +89,12 @@ export default function Recipe({ categories }) {
 								className={clsx(styles.card)}
 							/>
 						))}
+					{/* Category가 없고, Search있고, Search배열 값이 0일때 */}
+					{!isCategory && isSearch && dataBySearch.length === 0 && (
+						<Text>
+							No Results!! <br /> Try another Recipe Name.
+						</Text>
+					)}
 				</div>
 			</section>
 		</>
