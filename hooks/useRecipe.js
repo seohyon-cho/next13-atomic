@@ -38,7 +38,7 @@ export const useRecipeBySearch = (DobounceSearch) => {
 //아이디로 상세 레시피 fetching
 const getRecipeById = async ({ queryKey }) => {
 	const { data } = await axios.get(`/lookup.php?i=${queryKey[1]}`);
-	return data?.meals || [];
+	return data?.meals[0] || '';
 };
 export const useRecipeById = (DebounceId) => {
 	return useQuery(['RecipeById', DebounceId], getRecipeById, {
