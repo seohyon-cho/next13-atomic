@@ -27,6 +27,15 @@ export function Table({ data }) {
 						))}
 					</tr>
 				</thead>
+				<tbody>
+					{data.map((el, idx) => (
+						<tr key={idx}>
+							{Object.values(el).map((val, idx) => (
+								<td key={idx}>{val}</td>
+							))}
+						</tr>
+					))}
+				</tbody>
 			</table>
 		</>
 	);
