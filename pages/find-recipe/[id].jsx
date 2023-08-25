@@ -4,6 +4,7 @@ import { useRecipeById } from '@/hooks/useRecipe';
 import { useRouter } from 'next/router';
 import styles from './detail.module.scss';
 import clsx from 'clsx';
+import { BounceLoader } from 'react-spinners';
 
 function Detail() {
 	const router = useRouter();
@@ -13,11 +14,21 @@ function Detail() {
 
 	return (
 		<section className={clsx(styles.detail)}>
-			<Title type={'slogan'}>{data?.strMeal}</Title>
+			<BounceLoader
+				loading={!isSuccess}
+				cssOverride={{ position: 'absolute', top: 300, left: '50%', transform: 'translateX(-50%)' }}
+				color={'orange'}
+				size={100}
+			/>
+			{isSuccess && (
+				<>
+					<Title type={'slogan'}>{data.strMeal}</Title>
 
-			<div className={clsx(styles.picFrame)}>
-				<Pic imgSrc={data?.strMealThumb} />
-			</div>
+					<div className={clsx(styles.picFrame)}>
+						<Pic imgSrc={data.strMealThumb} />
+					</div>
+				</>
+			)}
 		</section>
 	);
 }
