@@ -9,7 +9,7 @@ function Header() {
 			<Title url={'/'} type={'logo'}>
 				DCODELAB
 			</Title>
-			<Navbar names={['Find Recipe', 'My Favorait']} gap={80} />
+			<Navbar names={['Find Recipe', 'My Favorait']} />
 		</header>
 	);
 }
