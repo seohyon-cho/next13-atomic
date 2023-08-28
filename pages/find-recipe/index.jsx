@@ -21,8 +21,6 @@ export default function Recipe({ categories }) {
 	const { data: dataByCategory, isSuccess: isCategory } = useRecipeByCategory(DebouncedSelected, DebouncedSearch);
 	const { data: dataBySearch, isSuccess: isSearch } = useRecipeBySearch(DebouncedSearch);
 
-	console.log('isCategory', isCategory, 'isSearch', isSearch);
-
 	const handleClickCategory = (state) => {
 		setSearch('');
 		setSelected(state);

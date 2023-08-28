@@ -13,7 +13,6 @@ import clsx from 'clsx';
 
 export function Table({ data, title }) {
 	if (data.length === 0) return;
-	console.log(data[0]);
 	return (
 		<>
 			{title && <Title>{title}</Title>}
