@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const getRecipeByCategory = async ({ queryKey }) => {
 	const { data } = await axios.get(`/filter.php?c=${queryKey[1]}`);
@@ -38,6 +39,7 @@ export const useRecipeBySearch = (DobounceSearch) => {
 //아이디로 상세 레시피 fetching
 const getRecipeById = async ({ queryKey }) => {
 	const { data } = await axios.get(`/lookup.php?i=${queryKey[1]}`);
+	console.log(data);
 	return data?.meals[0] || '';
 };
 export const useRecipeById = (DebounceId) => {

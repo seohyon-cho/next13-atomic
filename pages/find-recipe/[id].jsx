@@ -52,7 +52,7 @@ function Detail() {
 					</div>
 					<Table data={TableData} title={data.strMeal} />
 
-					<List data={ListData} />
+					<List data={ListData} url={Array(14).fill('a')} tag={'ol'} />
 				</>
 			)}
 		</section>
