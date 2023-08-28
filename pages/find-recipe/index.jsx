@@ -57,12 +57,12 @@ export default function Recipe({ categories }) {
 				<div className={clsx(styles.listFrame)}>
 					{isCategory &&
 						dataByCategory.map((el) => (
-							<Card key={el.idMeal} imgSrc={el.strMealThumb} url={`/find-recipe/${el.idMeal}`} txt={`category - ${el.strMeal}`} className={clsx(styles.card)} />
+							<Card key={el.idMeal} imgSrc={el.strMealThumb} url={`/find-recipe/${el.idMeal}`} txt={`${el.strMeal}`} className={clsx(styles.card)} />
 						))}
 
 					{isSearch &&
 						dataBySearch.map((el) => (
-							<Card key={el.idMeal} imgSrc={el.strMealThumb} url={`/find-recipe/${el.idMeal}`} txt={`search - ${el.strMeal}`} className={clsx(styles.card)} />
+							<Card key={el.idMeal} imgSrc={el.strMealThumb} url={`/find-recipe/${el.idMeal}`} txt={`${el.strMeal}`} className={clsx(styles.card)} />
 						))}
 
 					{isSearch && dataBySearch.length === 0 && (
