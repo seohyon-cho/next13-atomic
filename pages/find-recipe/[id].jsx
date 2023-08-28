@@ -19,7 +19,9 @@ function Detail() {
 		if (data) {
 			const keys = Object.keys(data);
 			const filterKeys1 = keys.filter((key) => key.startsWith('strIngredient'));
-			const filterKeys2 = filterKeys1.filter((key) => data[key] !== '' && data[key] !== null);
+			const filterKeys2 = filterKeys1.filter(
+				(key) => data[key] !== '' && data[key] !== null
+			);
 			const ingredients = filterKeys2.map((key, idx) => ({
 				index: idx + 1,
 				ingredient: data[key],
@@ -39,7 +41,12 @@ function Detail() {
 		<section className='detail'>
 			<BounceLoader
 				loading={!data}
-				cssOverride={{ position: 'absolute', top: 300, left: '50%', transform: 'translateX(-50%)' }}
+				cssOverride={{
+					position: 'absolute',
+					top: 300,
+					left: '50%',
+					transform: 'translateX(-50%)',
+				}}
 				color={'orange'}
 				size={100}
 			/>
@@ -52,7 +59,7 @@ function Detail() {
 					</div>
 					<Table data={TableData} title={data.strMeal} />
 
-					<List data={ListData} url={Array(14).fill('a')} tag={'ol'} />
+					<List data={ListData} url={Array(14).fill('a')} />
 				</>
 			)}
 		</section>
