@@ -9,6 +9,8 @@ import { useState, useEffect } from 'react';
 import List from '@/components/atoms/List/List';
 
 function Detail() {
+	const test = /^\d+[.]$/.test('23.');
+	console.log(test);
 	const router = useRouter();
 	const { id } = router.query;
 	const { data } = useRecipeById(id);
@@ -17,6 +19,7 @@ function Detail() {
 
 	useEffect(() => {
 		if (data) {
+			//console.log(data.strInstructions);
 			const keys = Object.keys(data);
 			const filterKeys1 = keys.filter((key) => key.startsWith('strIngredient'));
 			const filterKeys2 = filterKeys1.filter(
@@ -29,11 +32,13 @@ function Detail() {
 			}));
 			setTableData(ingredients);
 
-			let intructions = data.strInstructions
+			let instructions = data.strInstructions
 				.split('.')
 				.map((text) => text.trim().replace('\r\n', '').trim() + '.')
+				.filter((text) => !/^\d+[.]$/.test(text))
 				.filter((text) => text !== '.');
-			setListData(intructions);
+			setListData(instructions);
+			console.log(instructions);
 		}
 	}, [data]);
 
@@ -59,7 +64,7 @@ function Detail() {
 					</div>
 					<Table data={TableData} title={data.strMeal} />
 
-					<List data={ListData} url={Array(14).fill('a')} />
+					<List data={ListData} />
 				</>
 			)}
 		</section>
