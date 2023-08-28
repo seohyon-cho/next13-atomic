@@ -9,16 +9,16 @@ const nanum = Nanum_Myeongjo({
 	weight: ['400', '700'],
 	preload: true,
 	variable: '--font-nanum',
-	display: 'swap',
-	adjustFontFallback: false,
+	display: 'block',
+	adjustFontFallback: true,
 });
 const orbitron = Orbitron({
 	subsets: ['latin'],
 	weight: ['400', '700'],
 	preload: true,
 	variable: '--font-orbitron',
-	display: 'swap',
-	adjustFontFallback: false,
+	display: 'block',
+	adjustFontFallback: true,
 });
 
 export function Title({ children, url, style, className, type, tag = 'h1' }) {
