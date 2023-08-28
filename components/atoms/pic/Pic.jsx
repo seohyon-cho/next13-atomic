@@ -40,8 +40,8 @@ export function Pic({ imgSrc, style, imgTxt, children, className, priority = fal
 
 			<HashLoader
 				cssOverride={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
-				size={100}
-				color={'aqua'}
+				size={50}
+				color={'orange'}
 				loading={!IsLoaded}
 			/>
 		</div>
