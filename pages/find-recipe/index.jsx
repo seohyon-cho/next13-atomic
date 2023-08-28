@@ -46,11 +46,13 @@ export default function Recipe({ categories }) {
 			<section className={styles.recipePage}>
 				<Category items={categories} onClick={handleClickCategory} active={DebouncedSelected} className={clsx(styles.category)} />
 
-				<Title type={'slogan'} className={clsx(styles.titCategory)} style={{ color: '#bbb', hoverColor: '#bbb' }}>
-					{DebouncedSelected ? DebouncedSelected : `Result: ${DebouncedSearch}`}
-				</Title>
+				<article className={clsx(styles.titBox)}>
+					<Title type={'slogan'} className={clsx(styles.titCategory)} style={{ color: '#bbb', hoverColor: '#bbb' }}>
+						{DebouncedSelected ? DebouncedSelected : `Result: ${DebouncedSearch}`}
+					</Title>
 
-				<SearchBar inputType={'text'} isBtn={false} placeholder={'search'} value={Search} onChange={setSearch} />
+					<SearchBar inputType={'text'} isBtn={false} placeholder={'search'} value={Search} onChange={setSearch} />
+				</article>
 
 				<div className={clsx(styles.listFrame)}>
 					{isCategory &&
