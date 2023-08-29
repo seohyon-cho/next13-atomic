@@ -4,6 +4,7 @@ import { Title } from '@/components/atoms/text/Title';
 import styles from './favorait.module.scss';
 import { useState, useEffect } from 'react';
 import { useRecipesByIds } from '@/hooks/useRecipe';
+import Card from '@/components/molecules/Card/Card';
 
 function Favorait() {
 	const [SavedId, setSavedId] = useState([]);
@@ -32,6 +33,20 @@ function Favorait() {
 
 			<section className={clsx(styles.favoraitePage)}>
 				<Title type={'slogan'}>My Favoraite Recipe</Title>
+				{result &&
+					result.map(({ data, isSuccess }) => {
+						if (isSuccess) {
+							return (
+								<Card
+									key={data.idMeal}
+									imgSrc={data.strMealThumb}
+									url={`/find-recipe/${data.idMeal}`}
+									txt={`${data.strMeal}`}
+									className={clsx(styles.card)}
+								/>
+							);
+						}
+					})}
 			</section>
 		</>
 	);
