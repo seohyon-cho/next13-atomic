@@ -9,8 +9,10 @@ import { useState, useEffect } from 'react';
 import List from '@/components/atoms/List/List';
 
 function Detail() {
-	const test = /^\d+[.]$/.test('23.');
-	console.log(test);
+	//정규표현식에서 해당 조건이 포함이 아닌 딱 조건에 부합될때만 처리 ^조건$
+	//표현식뒤에 + : 해당 조건의 값이 반복되는 경우에도 true로 인지
+	const result = /^\d+[.]+[' ']$/.test('2. ');
+	console.log(result);
 	const router = useRouter();
 	const { id } = router.query;
 	const { data } = useRecipeById(id);
@@ -32,12 +34,10 @@ function Detail() {
 			}));
 			setTableData(ingredients);
 
-			let instructions = data.strInstructions
-				.split('.')
-				.map((text) => text.trim().replace('\r\n', '').trim() + '.')
-				.filter((text) => !/^\d+[.]$/.test(text))
-				.filter((text) => text !== '.');
-			setListData(instructions);
+			let instructions = data.strInstructions.split('.');
+			//.map((text) => text.trim().replace('\r\n', '').trim() + '.')
+
+			//setListData(instructions);
 			console.log(instructions);
 		}
 	}, [data]);
@@ -64,7 +64,7 @@ function Detail() {
 					</div>
 					<Table data={TableData} title={data.strMeal} />
 
-					<List data={ListData} />
+					{/* <List data={ListData} tag={'ol'} /> */}
 				</>
 			)}
 		</section>
