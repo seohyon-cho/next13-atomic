@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { Title } from '@/components/atoms/text/Title';
 import styles from './favorait.module.scss';
 import { useState, useEffect } from 'react';
+import { useRecipesByIds } from '@/hooks/useRecipe';
 
 function Favorait() {
 	const [SavedId, setSavedId] = useState([]);
@@ -18,6 +19,8 @@ function Favorait() {
 	useEffect(() => {
 		console.log(SavedId);
 	}, [SavedId]);
+
+	useRecipesByIds(SavedId);
 
 	return (
 		<>
