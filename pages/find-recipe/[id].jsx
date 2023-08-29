@@ -9,6 +9,7 @@ import { Table } from '@/components/atoms/Table/Table';
 import { useState, useEffect } from 'react';
 import List from '@/components/atoms/List/List';
 import Btn from '@/components/atoms/Button/Btn';
+import { Text } from '@/components/atoms/text/Text';
 
 function Detail() {
 	const router = useRouter();
@@ -105,6 +106,9 @@ function Detail() {
 					<Btn onClick={handleSave} className={clsx(Saved && styles.del)}>
 						{Saved ? 'Remove from my Favoraite' : 'Add to my Favorait'}
 					</Btn>
+					{Saved && (
+						<Text>You already added this recipe to your Favoraite.</Text>
+					)}
 					<Table data={TableData} title={data.strMeal} />
 
 					<List data={ListData} tag={'ol'} />
