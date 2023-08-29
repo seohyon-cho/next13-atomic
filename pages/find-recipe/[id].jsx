@@ -7,6 +7,7 @@ import { BounceLoader } from 'react-spinners';
 import { Table } from '@/components/atoms/Table/Table';
 import { useState, useEffect } from 'react';
 import List from '@/components/atoms/List/List';
+import Btn from '@/components/atoms/Button/Btn';
 
 function Detail() {
 	const router = useRouter();
@@ -14,6 +15,27 @@ function Detail() {
 	const { data } = useRecipeById(id);
 	const [TableData, setTableData] = useState([]);
 	const [ListData, setListData] = useState([]);
+	const [Saved, setSaved] = useState(false);
+
+	//router로 들어오는 id값이 변경될때마다 실행되는 useEffect
+	useEffect(() => {
+		//로컬저장소에 savedRecipe이름으로 특정 값이 있기만 하면실행
+		if (localStorage.getItem('savedRecipe')) {
+			//해당 데이터를 배열로 파싱해서 가져옴
+			const savedRecipe = JSON.parse(localStorage.getItem('savedRecipe'));
+
+			//가져온배열값에서 router들어온 id값이 있는 확인
+			if (savedRecipe.includes(id)) {
+				setSaved(true);
+				//로컬저장소에 값은 있지만 현재 라우터로 받은 레시피 정보값은 없는 경우
+			} else {
+				setSaved(false);
+			}
+			//아예 로컬저장소 자체가 없으면 그냥 빈배열값으로 저장소 생성
+		} else {
+			localStorage.setItem('savedRecipe', JSON.stringify([]));
+		}
+	}, [id]);
 
 	useEffect(() => {
 		if (data) {
@@ -43,10 +65,6 @@ function Detail() {
 	return (
 		<section className='detail'>
 			<BounceLoader
-				//기본적으로 next는 라우터명이 변경될떄마다 언마운트되는 페이지 컴포넌트의 csr방식으로 가져온 데이터와 스타일 노드를 제거
-				//page transition이 적용되어 있기 때문에 상세페이지에서 다른페이지로 넘어갈때 데이터는 이미 사라졌음에도 불구하고 데이터를 활용하는 컴포넌트가 계속 있으면 prop오류 발생
-				//해결방법: csr방식으로 가져오는 데이터 자체를 컴포넌트 렌더링의 조건설정
-				//데이터없으면 로딩바 출력, 데이터가 있으면 그 데이터를 활용하는 컴포넌트 출력
 				loading={!data}
 				cssOverride={{
 					position: 'absolute',
@@ -64,6 +82,7 @@ function Detail() {
 					<div className='picFrame'>
 						<Pic imgSrc={data.strMealThumb} />
 					</div>
+					<Btn>Add to My Favoraite</Btn>
 					<Table data={TableData} title={data.strMeal} />
 
 					<List data={ListData} tag={'ol'} />
