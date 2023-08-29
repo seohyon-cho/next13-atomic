@@ -17,6 +17,23 @@ function Detail() {
 	const [ListData, setListData] = useState([]);
 	const [Saved, setSaved] = useState(false);
 
+	//버튼 클릭할때마다 해당 recipeId를 저장, 삭제해주는 토글함수
+	const handleSave = () => {
+		const savedRecipe = JSON.parse(localStorage.getItem('savedRecipe'));
+
+		if (!Saved) {
+			savedRecipe.push(data.idMeal);
+			localStorage.setItem('savedRecipe', JSON.stringify(savedRecipe));
+			setSaved(true);
+		} else {
+			//배열.splice('자를요소의 순번','갯수')
+			//해당페이지의 레시피아이디값의 배열의 순번을 구한다음 해당 순번의 배열값 하나만 제거
+			savedRecipe.splice(savedRecipe.indexOf(data.idMeal), 1);
+			localStorage.setItem('savedRecipe', JSON.stringify(savedRecipe));
+			setSaved(false);
+		}
+	};
+
 	//router로 들어오는 id값이 변경될때마다 실행되는 useEffect
 	useEffect(() => {
 		//로컬저장소에 savedRecipe이름으로 특정 값이 있기만 하면실행
@@ -24,7 +41,7 @@ function Detail() {
 			//해당 데이터를 배열로 파싱해서 가져옴
 			const savedRecipe = JSON.parse(localStorage.getItem('savedRecipe'));
 
-			//가져온배열값에서 router들어온 id값이 있는 확인
+			//가져온배열값에서 router들어온 id값이 있는지 확인
 			if (savedRecipe.includes(id)) {
 				setSaved(true);
 				//로컬저장소에 값은 있지만 현재 라우터로 받은 레시피 정보값은 없는 경우
@@ -82,7 +99,7 @@ function Detail() {
 					<div className='picFrame'>
 						<Pic imgSrc={data.strMealThumb} />
 					</div>
-					<Btn>Add to My Favoraite</Btn>
+					<Btn onClick={handleSave}>Add to My Favoraite</Btn>
 					<Table data={TableData} title={data.strMeal} />
 
 					<List data={ListData} tag={'ol'} />
