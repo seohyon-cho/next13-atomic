@@ -54,12 +54,13 @@ export const useRecipesByIds = (arr) => {
 	const queries = arr.map((id) => ({
 		queryKey: ['RecipById', id],
 		queryFn: getRecipeById,
+		refetchOnMount: false,
+		refetchOnWindowFocus: false,
+		cacheTime: 1000 * 60 * 60 * 24,
+		staleTime: 1000 * 60 * 60 * 24,
 	}));
-
-	console.log(queries);
 
 	//useQueries : 복수개의 useQuery를 병렬식으로 동시에 작업 실행
 	//사용방법: useQueries([useQuery, useQuery, useQuery])
-
 	return useQueries({ queries });
 };
