@@ -3,6 +3,7 @@ import { Title } from '@/components/atoms/text/Title';
 import { useRecipeById } from '@/hooks/useRecipe';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
+import styles from './detail.module.scss';
 import { BounceLoader } from 'react-spinners';
 import { Table } from '@/components/atoms/Table/Table';
 import { useState, useEffect } from 'react';
@@ -80,7 +81,7 @@ function Detail() {
 	}, [data]);
 
 	return (
-		<section className='detail'>
+		<section className={clsx(styles.detail)}>
 			<BounceLoader
 				loading={!data}
 				cssOverride={{
@@ -96,10 +97,14 @@ function Detail() {
 				<>
 					<Title type={'slogan'}>{data.strMeal}</Title>
 
-					<div className='picFrame'>
+					<div className={clsx(styles.picFrame)}>
 						<Pic imgSrc={data.strMealThumb} />
 					</div>
-					<Btn onClick={handleSave}>Add to My Favoraite</Btn>
+
+					{/* 버튼 클릭시 Saved값이 true일떄만 모듈sass로 del 클래스명을 붙이고 해당 고유 클래스명은 atom컴포넌트로 상속됨 : 결과적으로 해당 클래스명의 스타일이 atom컴포넌트의 기본 style을 덮어쓰기 */}
+					<Btn onClick={handleSave} className={clsx(Saved && styles.del)}>
+						{Saved ? 'Remove from my Favoraite' : 'Add to my Favorait'}
+					</Btn>
 					<Table data={TableData} title={data.strMeal} />
 
 					<List data={ListData} tag={'ol'} />
