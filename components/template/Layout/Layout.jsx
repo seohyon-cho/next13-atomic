@@ -14,7 +14,6 @@ function Layout({ children }) {
 
 	useEffect(() => {
 		const arr = router.asPath.split('/');
-		arr[0] = 'Home';
 		setPath(arr);
 	}, [router]);
 
