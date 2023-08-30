@@ -11,12 +11,14 @@ function Layout({ children }) {
 	const router = useRouter();
 	const [Path, setPath] = useState([]);
 	const [IsShow, setIsShow] = useState(true);
+	const [IsMain, setIsMain] = useState(true);
 
 	useEffect(() => {
 		const arr = router.asPath.split('/');
 		setPath(arr);
 		//router경로가 바뀔때마다 순간적으로 IsShow값을 false로 바꿨다가
 		setIsShow(false);
+		setIsMain(router.asPath === '/');
 		//페이지전환 모션이 끝나는 0.5초 뒤에 다시 true로 변경
 		setTimeout(() => setIsShow(true), 500);
 	}, [router]);
@@ -32,7 +34,7 @@ function Layout({ children }) {
 				<Header />
 				<section className={clsx(styles.content)}>
 					{/* 해당 브래드크럼의 활성화 유무를 IsShow값으로 연동 */}
-					<BreadCrumbs data={Path} isActive={IsShow} />
+					<BreadCrumbs data={Path} isActive={IsShow && !IsMain} />
 					{children}
 				</section>
 				<Footer />
