@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import Footer from '@/components/organisms/Footer/Footer';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import BreadCrumbs from '@/components/molecules/BreadCrumbs/BreadCrumbs';
 
 function Layout({ children }) {
 	const router = useRouter();
@@ -13,6 +14,7 @@ function Layout({ children }) {
 
 	useEffect(() => {
 		const arr = router.asPath.split('/');
+		arr[0] = 'Home';
 		setPath(arr);
 	}, [router]);
 
@@ -25,7 +27,10 @@ function Layout({ children }) {
 			</Head>
 			<main className={clsx(styles.layout)}>
 				<Header />
-				<section className={clsx(styles.content)}>{children}</section>
+				<section className={clsx(styles.content)}>
+					<BreadCrumbs data={Path} />
+					{children}
+				</section>
 				<Footer />
 			</main>
 		</>
