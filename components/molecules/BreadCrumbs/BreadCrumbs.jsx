@@ -3,9 +3,10 @@ import styles from './BreadCrumbs.module.scss';
 import clsx from 'clsx';
 import React from 'react';
 
-function BreadCrumbs({ data }) {
+function BreadCrumbs({ data, isActive }) {
 	return (
-		<nav className={clsx(styles.breadcrumbs)}>
+		//IsActive값이 true일때에만 on클래스 추가
+		<nav className={clsx(styles.breadcrumbs, isActive ? styles.on : '')}>
 			{data.map((name, idx) => {
 				//문자값에 '-'있을때 처리
 				const result = name.includes('-')
