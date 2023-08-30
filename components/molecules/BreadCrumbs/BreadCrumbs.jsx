@@ -13,7 +13,7 @@ function BreadCrumbs({ data }) {
 					return (
 						<React.Fragment key={idx}>
 							<Text tag={'em'} url={`/${name}`}>
-								{name}
+								{!name ? 'Home' : name}
 							</Text>
 							<span> / </span>
 						</React.Fragment>
