@@ -14,8 +14,27 @@
 	h3 {
 		padding: 10px 5px;
 		border-top: 1px solid #888;
-		//border-bottom: 1px solid #888;
 		margin: 20px 0px;
+	}
+
+	&.horizontal {
+		width: 48%;
+		height: 20vh;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-bottom: 60px;
+
+		> div {
+			width: 30%;
+		}
+		> h3 {
+			width: calc(70% - 20px);
+			padding: 15px 20px 10px 0px;
+			margin: 0;
+			font-size: 22px;
+			color: orange;
+		}
 	}
 }
 

@@ -17,9 +17,7 @@ function Favorait() {
 		}
 	}, []);
 
-	//복수개의 쿼리 요청 결과값을 반환하는 커스텀 훅 호출
 	const result = useRecipesByIds(SavedId);
-	console.log(result);
 
 	return (
 		<>
@@ -39,6 +37,7 @@ function Favorait() {
 									url={`/find-recipe/${data.idMeal}?name=${data.strMeal}`}
 									txt={`${data.strMeal}`}
 									className={clsx(styles.card)}
+									type={'horizontal'}
 								/>
 							);
 						}
