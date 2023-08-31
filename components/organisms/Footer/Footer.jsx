@@ -13,6 +13,7 @@ function Footer() {
 			<nav>
 				<Category
 					items={['theme1', 'theme2', 'theme3']}
+					names={['Orange', 'Aqua', 'Hot pink']}
 					active={Theme}
 					onClick={setTheme}
 				/>
