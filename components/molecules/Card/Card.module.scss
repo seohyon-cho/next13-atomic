@@ -19,7 +19,7 @@
 
 	&.horizontal {
 		width: 48%;
-		height: 20vh;
+		height: 17vh;
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
@@ -41,17 +41,29 @@
 @media screen and (max-width: $tabletB) {
 	.card {
 		width: 30%;
+
+		&.horizontal {
+			width: 48%;
+		}
 	}
 }
 
 @media screen and (max-width: $tabletS) {
 	.card {
 		width: 46%;
+
+		&.horizontal {
+			width: 100%;
+		}
 	}
 }
 
 @media screen and (max-width: $mobile) {
 	.card {
 		width: 100%;
+
+		&.horizontal {
+			width: 100%;
+		}
 	}
 }

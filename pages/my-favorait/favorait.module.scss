@@ -1,2 +1,9 @@
 .favoraitePage {
+	h1 {
+		margin-bottom: 80px;
+	}
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
