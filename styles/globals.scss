@@ -18,7 +18,7 @@ a {
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	background: orange;
+	background: var(--point);
 	transform-origin: left;
 	z-index: 5;
 }
@@ -28,7 +28,7 @@ a {
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	background: orange;
+	background: var(--point);
 	transform-origin: right;
 	z-index: 5;
 }
