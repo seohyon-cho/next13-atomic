@@ -4,9 +4,19 @@ import styles from './Pic.module.scss';
 import Link from 'next/link';
 import { HashLoader } from 'react-spinners';
 import { useState } from 'react';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
-export function Pic({ imgSrc, style, imgTxt, children, className, priority = false, url }) {
+export function Pic({
+	imgSrc,
+	style,
+	imgTxt,
+	children,
+	className,
+	priority = false,
+	url,
+}) {
 	const [IsLoaded, setIsLoaded] = useState(false);
+	const { point } = useThemeColor();
 
 	return (
 		<div className={clsx(styles.pic, className)} style={style}>
@@ -39,9 +49,14 @@ export function Pic({ imgSrc, style, imgTxt, children, className, priority = fal
 			)}
 
 			<HashLoader
-				cssOverride={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+				cssOverride={{
+					position: 'absolute',
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)',
+				}}
 				size={50}
-				color={'orange'}
+				color={point}
 				loading={!IsLoaded}
 			/>
 		</div>

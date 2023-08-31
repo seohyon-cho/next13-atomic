@@ -6,7 +6,11 @@ function Category({ items, onClick, active }) {
 	return (
 		<nav className={clsx(styles.category)}>
 			{items.map((el) => (
-				<Btn key={el.idCategory} onClick={() => onClick(el.strCategory)} isActive={el.strCategory === active}>
+				<Btn
+					key={el.idCategory}
+					onClick={() => onClick(el.strCategory)}
+					isActive={el.strCategory === active}
+				>
 					{el.strCategory}
 				</Btn>
 			))}

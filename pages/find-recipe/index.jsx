@@ -12,10 +12,6 @@ import SearchBar from '@/components/molecules/SearchBar/SearchBar';
 import { Text } from '@/components/atoms/text/Text';
 
 export default function Recipe({ categories }) {
-	// const names = categories.map((category) =>
-	// 	Object.keys(category).filter((key) => key === 'strCategory')
-	// );
-	// console.log(names);
 	const [Selected, setSelected] = useState(categories[0].strCategory);
 	const [Search, setSearch] = useState('');
 

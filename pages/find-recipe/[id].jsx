@@ -10,8 +10,10 @@ import { useState, useEffect } from 'react';
 import List from '@/components/atoms/List/List';
 import Btn from '@/components/atoms/Button/Btn';
 import { Text } from '@/components/atoms/text/Text';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 function Detail() {
+	const { point } = useThemeColor();
 	const router = useRouter();
 	const { id } = router.query;
 	const { data } = useRecipeById(id);
@@ -91,7 +93,7 @@ function Detail() {
 					left: '50%',
 					transform: 'translateX(-50%)',
 				}}
-				color={'orange'}
+				color={point}
 				size={100}
 			/>
 			{data && (
