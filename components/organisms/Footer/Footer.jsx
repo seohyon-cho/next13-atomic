@@ -1,8 +1,6 @@
 import styles from './Footer.module.scss';
 import clsx from 'clsx';
 import { Text } from '@/components/atoms/text/Text';
-import { BounceLoader } from 'react-spinners';
-import Btn from '@/components/atoms/Button/Btn';
 import { useGlobalData } from '@/hooks/useGlobalContext';
 import Category from '@/components/molecules/Category/Category';
 
@@ -16,6 +14,7 @@ function Footer() {
 					names={['Orange', 'Aqua', 'Hot pink']}
 					active={Theme}
 					onClick={setTheme}
+					className={clsx(styles.category)}
 				/>
 			</nav>
 			<Text type={'util'} style={{ letterSpacing: 2 }}>

@@ -3,9 +3,32 @@
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	padding: 20px 10vw;
+	height: 10vh;
+	padding: 0 10vw;
 	display: flex;
 	flex-wrap: wrap;
+	align-content: center;
 	justify-content: space-between;
 	z-index: 3;
+
+	> p {
+		display: flex;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: $tabletS) {
+	.footer {
+		.category {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.footer {
+		.category {
+			margin-bottom: 10px;
+		}
+	}
 }
