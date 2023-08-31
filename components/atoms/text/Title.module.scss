@@ -1,5 +1,5 @@
 .tit {
-	color: #bbb;
+	color: var(--point);
 	font-family: var(--font-nanum);
 	font-weight: 400;
 	font-size: 16px;
@@ -28,6 +28,6 @@
 		font-family: var(--font-nanum);
 	}
 	&:hover {
-		color: orange;
+		color: var(--point);
 	}
 }

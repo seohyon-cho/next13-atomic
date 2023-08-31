@@ -10,7 +10,7 @@
 
 	&:hover,
 	&.on {
-		color: orange;
-		border: 1px solid orange;
+		color: var(--point);
+		border: 1px solid var(--point);
 	}
 }
