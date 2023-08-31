@@ -6,8 +6,10 @@ import Footer from '@/components/organisms/Footer/Footer';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import BreadCrumbs from '@/components/molecules/BreadCrumbs/BreadCrumbs';
+import { useGlobalData } from '@/hooks/useGlobalContext';
 
 function Layout({ children }) {
+	const { Theme } = useGlobalData();
 	const router = useRouter();
 	const [Path, setPath] = useState([]);
 	const [IsShow, setIsShow] = useState(true);
@@ -28,7 +30,7 @@ function Layout({ children }) {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main className={clsx(styles.layout)}>
+			<main className={clsx(styles.layout, Theme)}>
 				<Header />
 				<section className={clsx(styles.content)}>
 					<BreadCrumbs data={Path} isActive={IsShow && !IsMain} />
