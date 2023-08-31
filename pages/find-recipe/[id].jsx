@@ -98,7 +98,9 @@ function Detail() {
 			/>
 			{data && (
 				<>
-					<Title type={'slogan'}>{data.strMeal}</Title>
+					<Title type={'slogan'} style={{ color: point, hoverColor: point }}>
+						{data.strMeal}
+					</Title>
 
 					<div className={clsx(styles.picFrame)}>
 						<Pic imgSrc={data.strMealThumb} />

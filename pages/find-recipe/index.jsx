@@ -10,8 +10,10 @@ import { Title } from '@/components/atoms/text/Title';
 import clsx from 'clsx';
 import SearchBar from '@/components/molecules/SearchBar/SearchBar';
 import { Text } from '@/components/atoms/text/Text';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 export default function Recipe({ categories }) {
+	const { point } = useThemeColor();
 	const names = useRef([]);
 	//카테고리 컴포넌트에 순수하게 출력해야되는 메뉴명을 배열로 전달해야 되므로
 	//서버에서 받아온 데이터에서 strCategory에 해당 하는 메뉴값만 배열로 반환해서 참조객체에 담고 컴포넌트에 전달
@@ -60,7 +62,7 @@ export default function Recipe({ categories }) {
 					<Title
 						type={'slogan'}
 						className={clsx(styles.titCategory)}
-						style={{ color: '#bbb', hoverColor: '#bbb' }}
+						style={{ color: point, hoverColor: point }}
 					>
 						{DebouncedSelected
 							? DebouncedSelected

@@ -5,9 +5,11 @@ import styles from './favorait.module.scss';
 import { useState, useEffect } from 'react';
 import { useRecipesByIds } from '@/hooks/useRecipe';
 import Card from '@/components/molecules/Card/Card';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 function Favorait() {
 	const [SavedId, setSavedId] = useState([]);
+	const { point } = useThemeColor();
 
 	useEffect(() => {
 		if (localStorage.getItem('savedRecipe')) {
@@ -26,7 +28,13 @@ function Favorait() {
 			</Head>
 
 			<section className={clsx(styles.favoraitePage)}>
-				<Title type={'slogan'}>My Favoraite Recipe</Title>
+				<Title
+					type={'slogan'}
+					style={{ color: point, hoverColor: point }}
+					className={clsx(styles.titCategory)}
+				>
+					My Favoraite Recipe
+				</Title>
 				{result &&
 					result.map(({ data, isSuccess }) => {
 						if (isSuccess) {
