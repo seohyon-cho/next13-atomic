@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import axios from 'axios';
-import Image from 'next/image';
 import Pic from '@/components/pic/Pic';
 import clsx from 'clsx';
 import styles from './Home.module.scss';
