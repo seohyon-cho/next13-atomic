@@ -24,6 +24,9 @@ export default function Home({ meals }) {
 					pariatur deleniti inventore iusto! Sunt quasi pariatur beatae tempore repellat.
 				</Text>
 				<Text>안녕하세요.</Text>
+				<Text tagName={'h3'} url={'/gallery'}>
+					갤러리로 이동
+				</Text>
 				{/* {mealsData.map((item, idx) => {
 					return (
 						<div key={item.idMeal}>
