@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import axios from 'axios';
 import Image from 'next/image';
+import Pic from '@/components/pic/Pic';
 
 // getStaticProps에서 전달받은 props 에서, props에 있는 meals라는 property 자체를 아예 비구조화할당으로 가져옴. = export default function Home(props.meals){};
 export default function Home({ meals }) {
@@ -18,8 +19,8 @@ export default function Home({ meals }) {
 				{mealsData.map((item) => {
 					return (
 						<div key={item.idMeal}>
-							<Image src={item.strMealThumb} alt={item.strMeal} priority width={100} height={100} />
-							<h2>{item.strMeal}</h2>
+							{/* imgSrc={}로 자식 컴포넌트 <Pic /> 로 데이터 전달 */}
+							<Pic imgSrc={item.strMealThumb} />
 						</div>
 					);
 				})}
@@ -31,6 +32,7 @@ export default function Home({ meals }) {
 // SSG 방식으로 페이지 렌더링
 // axios.get('데이터를 호출할 URL') (알아서 parsing 까지 해줌.)
 // serialize 관련 에러 뜰 시, 반환 받은 promise 객체를 그대로 내보내는 게 아니라, 실제 data 값까지 추출해낸 뒤에 그 data 값을 props로 전달하면 해결 됨.
+// export async function getStaticProps() {} 자체는 원래 SSG방식으로 렌더링 하는 건데, 여기에 revalidate 라는 옵션이 더해지면 ISR 방식으로 전환되는 개념임.
 export async function getStaticProps() {
 	const { data } = await axios.get('/filter.php?c=Seafood');
 	// {props: }라는 객체로 내보내면, 맨 상단에서 props로 전달 받을 수 있음.
