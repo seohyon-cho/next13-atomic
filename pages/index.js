@@ -18,14 +18,24 @@ export default function Home({ meals }) {
 
 			<main className={clsx(styles.main)}>
 				<h1>Main Page</h1>
-				{mealsData.map((item) => {
-					return (
-						<div key={item.idMeal}>
-							<div className={clsx(styles.bg)}>
-								<Pic imgSrc={item.strMealThumb} />
+				{mealsData.map((item, idx) => {
+					if (idx % 2 === 0) {
+						return (
+							<div key={item.idMeal}>
+								<div className={clsx(styles.bg)}>
+									<Pic imgSrc={item.strMealThumb} />
+								</div>
 							</div>
-						</div>
-					);
+						);
+					} else {
+						return (
+							<div key={item.idMeal}>
+								<div className={clsx(styles.bg)}>
+									<Pic imgSrc={item.strMealThumb} imgTxt={item.strMeal} />
+								</div>
+							</div>
+						);
+					}
 				})}
 			</main>
 		</>
