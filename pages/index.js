@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import axios from 'axios';
-import Pic from '@/components/pic/Pic';
+import Pic from '@/components/atoms/pic/Pic';
 import clsx from 'clsx';
 import styles from './Home.module.scss';
+import Text from '@/components/atoms/text/Text';
 
 // getStaticProps에서 전달받은 props 에서, props에 있는 meals라는 property 자체를 아예 비구조화할당으로 가져옴. = export default function Home(props.meals){};
 export default function Home({ meals }) {
@@ -17,7 +18,13 @@ export default function Home({ meals }) {
 
 			<main className={clsx(styles.main)}>
 				<h1>Main Page</h1>
-				{mealsData.map((item, idx) => {
+				<Text tagName={'h1'}>Hello</Text>
+				<Text tagName={'span'}>
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus dignissimos tempora a labore error, nostrum laboriosam hic odit at earum
+					pariatur deleniti inventore iusto! Sunt quasi pariatur beatae tempore repellat.
+				</Text>
+				<Text>안녕하세요.</Text>
+				{/* {mealsData.map((item, idx) => {
 					return (
 						<div key={item.idMeal}>
 							<div className={clsx(styles.bg)}>
@@ -25,7 +32,7 @@ export default function Home({ meals }) {
 							</div>
 						</div>
 					);
-				})}
+				})} */}
 			</main>
 		</>
 	);
