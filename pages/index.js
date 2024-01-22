@@ -1,8 +1,12 @@
 import Head from 'next/head';
 import axios from 'axios';
+import Image from 'next/image';
 
-export default function Home(props) {
-	console.log('SSG', props);
+// getStaticProps에서 전달받은 props 에서, props에 있는 meals라는 property 자체를 아예 비구조화할당으로 가져옴. = export default function Home(props.meals){};
+export default function Home({ meals }) {
+	// meals 의 데이터 여러 개 중, 5개만 가져오는 것.
+	// 기존, 밑에서 map 돌릴 때 if (idx<=5) return; 으로 설정 갯수 넘어가면 끊어버리는 거랑 같은 역할.
+	const mealsData = meals.slice(0, 5);
 	return (
 		<>
 			<Head>
@@ -11,6 +15,14 @@ export default function Home(props) {
 
 			<main>
 				<h1>Main Page</h1>
+				{mealsData.map((item) => {
+					return (
+						<div key={item.idMeal}>
+							<Image src={item.strMealThumb} alt={item.strMeal} priority width={100} height={100} />
+							<h2>{item.strMeal}</h2>
+						</div>
+					);
+				})}
 			</main>
 		</>
 	);
