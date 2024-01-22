@@ -15,6 +15,8 @@ export default function App({ Component, pageProps }) {
 	index.js : 초기 메인 페이지 컴포넌트 
 
 
+
+
 		Next 13에서의 새로운 렌더링 방식
 	
 	(1). CSR (Client Side Rendering)
@@ -28,4 +30,27 @@ export default function App({ Component, pageProps }) {
 
 	(4). ISR (Incremental Static Regeneration)
 	: SSG와 마찬가지로, 처음 빌드 시 미리 preRender되나, 일정시간마다 정기적으로 서버 쪽에서 데이터를 refetching하여, 점진적으로 새로운 데이터로 변경된 PreRender Page를 제공함. 
+
+-----------------------------------------------------------------
+
+	[ Atomic Design Pattern ]
+	: 컴포넌트를, 원자처럼 최소 단위로 쪼개어 재활용 가능하게끔 컴포넌트를 개발하는 로직. 
+
+	* Atoms : 원자 단위 컴포넌트 
+			- 버튼, 메뉴, 제목, 글자, form요소, 이미지, ...
+
+	* Molecule : 분자 단위 컴포넌트 (원자 단위 컴포넌트를 조합하여 한 단계 상위 컴포넌트를 만드는 것)
+			- ex) 검색 바 (폼+버튼), 블로그 리스트 1개 (글자+버튼+이미지)
+
+	* Organisms : 유기체 컴포넌트 (분자 단위 컴포넌트를 조합하여 한 단계 상위 컴포넌트를 만드는 것)
+	(독립적인 기능을 할 수 있는 컴포넌트)
+			- ex) Header, 블로그 목록, Footer, 비쥬얼, ...
+
+	* Page (페이지 레이아웃) : 각 유기체를 조합해 구성한 페이지 컴포넌트 
+
+
+	[ Atomic Design Pattern 의 단점 ]
+
+	(1). 최초 개발 시 공수가 많이 들어감. (설계를 치밀하게 해야 동작함.)
+	(2). Atomic Design Pattern으로 개발한 컴포넌트의 구조를, 이를 활용하여 프로젝트를 진행할 모든 팀원들이 모두 해당 내용을 숙지하고 있어야 함. 
 */
