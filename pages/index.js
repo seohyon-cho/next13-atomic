@@ -2,6 +2,8 @@ import Head from 'next/head';
 import axios from 'axios';
 import Image from 'next/image';
 import Pic from '@/components/pic/Pic';
+import clsx from 'clsx';
+import styles from './Home.module.scss';
 
 // getStaticProps에서 전달받은 props 에서, props에 있는 meals라는 property 자체를 아예 비구조화할당으로 가져옴. = export default function Home(props.meals){};
 export default function Home({ meals }) {
@@ -14,13 +16,14 @@ export default function Home({ meals }) {
 				<title>Main Page</title>
 			</Head>
 
-			<main>
+			<main className={clsx(styles.main)}>
 				<h1>Main Page</h1>
 				{mealsData.map((item) => {
 					return (
 						<div key={item.idMeal}>
-							{/* imgSrc={}로 자식 컴포넌트 <Pic /> 로 데이터 전달 */}
-							<Pic imgSrc={item.strMealThumb} />
+							<div className={clsx(styles.bg)}>
+								<Pic imgSrc={item.strMealThumb} />
+							</div>
 						</div>
 					);
 				})}
