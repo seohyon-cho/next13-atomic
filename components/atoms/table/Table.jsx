@@ -3,8 +3,6 @@ import styles from './table.module.scss';
 import Text from '../text/Text';
 
 export function TableY({ data, title, className, isCount = false, reverse = false }) {
-	console.log(data);
-	// data를 받을 때, 역순으로 바꾸더라도 불변성을 유지하면서 바꿔야 하므로, 역순 적용을 하려면 원본을 복사해서 reverse() 처리하거나, 적용을 안 할 거면 기존 데이터 그대로 복사해서 가져오기만 하면 됨.
 	data = reverse ? [...data].reverse() : [...data];
 	return (
 		<>
@@ -14,10 +12,10 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 				</Text>
 			)}
 
-			<table className={clsx(styles.table, className)} border={1}>
+			<table className={clsx(styles.table, className)} border='1'>
 				<thead>
 					<tr>
-						{isCount && <th scope='column'>No</th>}
+						{isCount && <th scope='col'>No</th>}
 						{Object.keys(data[0]).map((key) => (
 							<th key={key}>{key}</th>
 						))}
@@ -27,7 +25,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 					{data.map((el, idx) => (
 						<tr key={idx}>
 							{isCount && <td>{reverse ? data.length - idx : idx + 1}</td>}
-							{Object.values(el).map((val) => (
+							{Object.values(el).map((val, idx) => (
 								<td key={idx}>{val}</td>
 							))}
 						</tr>
@@ -40,7 +38,6 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 
 export function TableX({ data, title, className, reverse = false }) {
 	const keys = Object.keys(data[0]);
-	console.log(keys);
 
 	return (
 		<>
@@ -50,13 +47,13 @@ export function TableX({ data, title, className, reverse = false }) {
 				</Text>
 			)}
 
-			<table border='1'>
+			<table border='1' className={clsx(styles.table, className)}>
 				<tbody>
 					{data.map((el, idx) => (
 						<tr key={idx}>
-							<th>{keys[idx]}</th>
-							{Object.values(el).map((val, idx) => (
-								<td key={idx}>{val}</td>
+							<th scope='row'>{keys[idx]}</th>
+							{Object.values(el).map((_, idx2) => (
+								<td key={idx2}>{data[idx2][keys[idx]]}</td>
 							))}
 						</tr>
 					))}
