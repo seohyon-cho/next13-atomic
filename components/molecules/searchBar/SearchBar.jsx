@@ -8,7 +8,9 @@ export default function SearchBar({ value, onChange, className, placeholder }) {
 		<div className={clsx(styles.searchBar, className)}>
 			{/* onChange={onChange} 로 꼭 써야 제대로 전달받을 수 있음. */}
 			<Input type={'text'} value={value} onChange={onChange} placeholder={placeholder} />
-			<RiSearchLine />
+			<button>
+				<RiSearchLine />
+			</button>
 		</div>
 	);
 }
