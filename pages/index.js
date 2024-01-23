@@ -14,7 +14,7 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={clsx(styles.main)}>
-				<List data={topRated} tagName={'ol'} divider={'-'} />
+				<List data={topRated} tagName={'ol'} divider={'-'} url={url} />
 			</main>
 		</>
 	);
