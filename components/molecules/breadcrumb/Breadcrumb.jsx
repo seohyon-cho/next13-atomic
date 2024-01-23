@@ -4,7 +4,7 @@ import Text from '@/components/atoms/text/Text';
 import React from 'react';
 import { useRouter } from 'next/router';
 
-export default function Breadcrumb() {
+export default function Breadcrumb({ divider = '/' }) {
 	const pathArr = useRouter().asPath.split('/');
 
 	// 변환할 문자원본 (txt) 과 제거할 특수문자 (spc)를 인수로 받아서, 특수문자를 제거한 뒤 Capitalize하여 반환하는 함수 (화면에 출력될 메뉴 카테고리명에 활용)
@@ -39,7 +39,7 @@ export default function Breadcrumb() {
 							<Text tagName={'em'} url={'/' + name}>
 								{name === '' ? 'Home' : displayName}
 							</Text>
-							<span> / </span>
+							<span> {divider} </span>
 						</React.Fragment>
 					);
 				}

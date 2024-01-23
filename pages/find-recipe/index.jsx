@@ -6,7 +6,7 @@ export default function FindRecipe() {
 	return (
 		<section className={clsx(styles.findRecipe)}>
 			<h1>Find-recipe</h1>
-			<Breadcrumb />
+			<Breadcrumb divider={'>'} />
 		</section>
 	);
 }
