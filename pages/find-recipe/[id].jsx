@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Table from '@/components/atoms/table/Table';
+import { TableX, TableY } from '@/components/atoms/table/Table';
 
 export default function Detail() {
 	const [Recipe, setRecipe] = useState(null);
@@ -29,7 +29,8 @@ export default function Detail() {
 
 	return (
 		<section>
-			<Table title={title} data={data} isCount reverse />
+			<TableX title={title} data={data} isCount />
+			<TableY title={title} data={data} isCount />
 		</section>
 	);
 }
