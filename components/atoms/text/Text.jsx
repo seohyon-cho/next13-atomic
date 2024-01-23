@@ -18,10 +18,10 @@ const orbitron = Orbitron({
 	variable: '--font-orbitron',
 });
 
-export default function Text({ tagName = 'p', children, url, styleType }) {
+export default function Text({ tagName = 'p', children, url, styleType, className }) {
 	return React.createElement(
 		tagName,
-		{ className: clsx(styles.text, nanum.variable, orbitron.variable, styles[styleType]) },
+		{ className: clsx(styles.text, nanum.variable, orbitron.variable, styles[styleType], className) },
 		url ? React.createElement(Link, { href: url }, children) : children
 	);
 }

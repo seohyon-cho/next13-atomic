@@ -25,6 +25,9 @@ export default function Home({ meals }) {
 					quibusdam illo eligendi illum, suscipit, rerum quisquam neque id. Magni, nesciunt aspernatur.
 				</Text>
 				<Text styleType={'slogan'}>Slogan</Text>
+				<Text styleType={'slogan'} className={clsx(styles.customTit)}>
+					Slogan2
+				</Text>
 			</main>
 		</>
 	);
