@@ -1,14 +1,19 @@
-import SearchBar from '@/components/molecules/searchBar/SearchBar';
-import { useState } from 'react';
+import Category from '@/components/molecules/category/Category';
 
-export default function Gallery() {
-	const [Val, setVal] = useState('');
-	console.log(Val);
+export default function Pages() {
+	const fetchData = [
+		{ name: 'David', age: 20 },
+		{ name: 'Emily', age: 30 },
+		{ name: 'Paul', age: 40 }
+	];
+	const nameArr = fetchData.map(data => data.name);
 
+	const handleClick = ({ data, idx }) => {
+		console.log(data[idx]);
+	};
 	return (
 		<section>
-			{/* 가장 상위에서는 onChange={전달할 값} 부여하면 됨.  */}
-			<SearchBar value={Val} onChange={setVal} />
+			<Category fetchDataArr={fetchData} nameArr={nameArr} onClick={handleClick} />
 		</section>
 	);
 }
