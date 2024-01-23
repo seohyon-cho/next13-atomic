@@ -7,9 +7,6 @@ import { useRouter } from 'next/router';
 export default function List({ tagName = 'ul', data, className, url, children, divider = ':' }) {
 	// List 컴포넌트가 출력되고 있는 마지막 라우터명 추출
 	const router = useRouter();
-	const pathArr = router.pathname.split('/');
-	const currentPath = pathArr[pathArr.length - 1];
-	console.log(currentPath);
 
 	return React.createElement(
 		tagName,
@@ -21,7 +18,7 @@ export default function List({ tagName = 'ul', data, className, url, children, d
 				{
 					key: idx,
 					// 만약, 해당 li의 url명과, 현재 보고있는 페이지의 라우터명이 동일하면, 해당 li 활성화.
-					className: clsx('/' + currentPath === url[idx] && styles.on),
+					className: clsx(router.pathname === url[idx] && styles.on),
 				},
 				url ? React.createElement(Link, { href: url[idx] }, child) : child
 			);
