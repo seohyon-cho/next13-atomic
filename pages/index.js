@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import axios from 'axios';
-import Pic from '@/components/atoms/pic/Pic';
 import clsx from 'clsx';
 import styles from './Home.module.scss';
-import Text from '@/components/atoms/text/Text';
+import List from '@/components/atoms/list/List';
 
 export default function Home({ meals }) {
-	const mealsData = meals.slice(0, 5);
-	const menuName = ['about', 'gallery', 'youtube'];
+	const topRated = ['Avatar', 'Emma', 'AquaMan'];
+	const url = ['/', '/gallery', '/about'];
 	return (
 		<>
 			<Head>
@@ -15,13 +14,7 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={clsx(styles.main)}>
-				<nav>
-					{menuName.map((name, idx) => (
-						<Text key={name} url={`/${name}`} tagName={'span'} isOn={idx === 0}>
-							{name}
-						</Text>
-					))}
-				</nav>
+				<List data={topRated} tagName={'ol'} divider={'-'} />
 			</main>
 		</>
 	);
