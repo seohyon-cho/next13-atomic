@@ -4,6 +4,10 @@
 	font-weight: 400;
 	font-size: 1rem;
 
+	&.on {
+		color: hotpink;
+	}
+
 	a {
 		font-size: inherit;
 		color: inherit;

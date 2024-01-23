@@ -7,6 +7,7 @@ import Text from '@/components/atoms/text/Text';
 
 export default function Home({ meals }) {
 	const mealsData = meals.slice(0, 5);
+	const menuName = ['about', 'gallery', 'youtube'];
 	return (
 		<>
 			<Head>
@@ -14,20 +15,13 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={clsx(styles.main)}>
-				<Text url={'/'} tagName={'h1'} styleType={'logo'}>
-					DCODELAB
-				</Text>
-				<Text tagName={'h2'} styleType={'title1'}>
-					Title Comes here.
-				</Text>
-				<Text>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet inventore pariatur fugiat sapiente dignissimos sequi ipsam fugit et
-					quibusdam illo eligendi illum, suscipit, rerum quisquam neque id. Magni, nesciunt aspernatur.
-				</Text>
-				<Text styleType={'slogan'}>Slogan</Text>
-				<Text styleType={'slogan'} className={clsx(styles.customTit)}>
-					Slogan2
-				</Text>
+				<nav>
+					{menuName.map((name, idx) => (
+						<Text key={name} url={`/${name}`} tagName={'span'} isOn={idx === 0}>
+							{name}
+						</Text>
+					))}
+				</nav>
 			</main>
 		</>
 	);
