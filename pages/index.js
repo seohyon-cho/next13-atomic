@@ -11,7 +11,7 @@ export default function Home({ meals, category }) {
 				<title>Main Page</title>
 			</Head>
 
-			<section className={clsx(styles.main)}>
+			<main className={clsx(styles.main)}>
 				<h1>Main Page</h1>
 				<h2>{category}</h2>
 
@@ -24,7 +24,7 @@ export default function Home({ meals, category }) {
 						</article>
 					);
 				})}
-			</section>
+			</main>
 		</>
 	);
 }

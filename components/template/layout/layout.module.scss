@@ -1,3 +1,35 @@
 .layout {
 	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background: #111;
+	padding: 15vh 0 10vh;
+
+	// header를 제외한 컨텐츠 영역
+	.content {
+		color: #ccc;
+		height: 100%;
+		overflow-y: auto;
+
+		// 그 내부의 커스텀 스크롤 바 설정
+		&::-webkit-scrollbar {
+			width: 4px;
+		}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 2px;
+			background: hotpink;
+		}
+
+		// 각 페이지별 root 태그 (main / sub 로 나누기 위함임.)
+		// (main 메인페이지 전용)
+		> main {
+			width: 100%;
+		}
+		// 각 페이지별 root 태그 (main / sub 로 나누기 위함임.)
+		// (sub 서브페이지 전용)
+		> section {
+			width: 80vw;
+			margin: 0 auto;
+		}
+	}
 }

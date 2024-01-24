@@ -5,10 +5,12 @@ import Breadcrumb from '@/components/molecules/breadcrumb/Breadcrumb';
 
 export default function Layout({ children }) {
 	return (
-		<main className={clsx(styles.layout)}>
+		<div className={clsx(styles.layout)}>
 			<Header />
-			<Breadcrumb />
-			{children}
-		</main>
+			<div className={clsx(styles.content)}>
+				<Breadcrumb />
+				{children}
+			</div>
+		</div>
 	);
 }
