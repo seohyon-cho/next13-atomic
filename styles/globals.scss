@@ -19,3 +19,25 @@ a {
 	text-decoration: none;
 	outline: 0;
 }
+
+// 페이지 변경 시마다, 전환되는 시간동안 보여질 마스크 패널
+.in {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--point);
+	z-index: 5;
+	transform-origin: left;
+}
+.out {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--point);
+	z-index: 5;
+	transform-origin: right;
+}
