@@ -37,3 +37,25 @@
 		font-size: 20vw;
 	}
 }
+
+.text.button {
+	display: inline-block;
+	padding: 5px 10px;
+	border: 1px solid var(--text);
+	background: transparent;
+	font-size: 0.7rem;
+	color: var(--text);
+	cursor: pointer;
+	opacity: 0.5;
+
+	&:hover {
+		border: 1px solid var(--point);
+		color: var(--point);
+		opacity: 1;
+	}
+	&.on {
+		border: 1px solid var(--point);
+		color: var(--point);
+		opacity: 1;
+	}
+}

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
+import axios from 'axios';
 import styles from './find-recipe.module.scss';
 import Category from '@/components/molecules/category/Category';
-import axios from 'axios';
 import { useState } from 'react';
 
 export default function FindRecipe({ categories }) {
@@ -11,20 +11,18 @@ export default function FindRecipe({ categories }) {
 
 	const handleClick = activeEl => {
 		setSelected(activeEl);
-		console.log(activeEl);
 	};
 
 	return (
 		<section className={clsx(styles.findRecipe)}>
 			<h1>Find Recipe</h1>
-			<Category dataArr={Names} selected={Selected} onClick={handleClick} />
+			<Category dataArr={Names} selectedEl={Selected} onClick={handleClick} className={clsx(styles.category)} />
 		</section>
 	);
 }
 
 export async function getStaticProps() {
-	const { data } = await axios.get('/categories.php');
-
+	const { data } = await axios.get(`/categories.php`);
 	return {
 		props: { categories: data.categories }
 	};
