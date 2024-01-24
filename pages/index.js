@@ -2,6 +2,7 @@ import Head from 'next/head';
 import clsx from 'clsx';
 import styles from './Home.module.scss';
 import axios from 'axios';
+import Image from 'next/image';
 
 export default function Home({ meals, category }) {
 	console.log('meals', meals);
@@ -14,6 +15,17 @@ export default function Home({ meals, category }) {
 
 			<main className={clsx(styles.main)}>
 				<h1>Main Page</h1>
+				<h2>{category}</h2>
+
+				{meals.map((data, idx) => {
+					if (idx >= 5) return null;
+					return (
+						<article key={idx}>
+							<Image src={data.strMealThumb} alt={data.strMeal} width={100} height={100} priority />
+							<h3>{data.strMeal}</h3>
+						</article>
+					);
+				})}
 			</main>
 		</>
 	);
