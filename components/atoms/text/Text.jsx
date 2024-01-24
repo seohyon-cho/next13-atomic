@@ -18,7 +18,7 @@ const orbitron = Orbitron({
 	variable: '--font-orbitron'
 });
 
-export default function Text({ children, url, tagName = 'p', styleType, className, isOn = false, onClick }) {
+export default function Text({ children, url, tagName = 'p', styleType, className, isOn, onClick }) {
 	return React.createElement(
 		tagName,
 		{

@@ -8,7 +8,7 @@ export default function Category({ dataArr, selectedEl, nameArr, onClick, classN
 	return (
 		<nav className={clsx(styles.category, className)}>
 			{dataArr.map((el, idx) => (
-				<Text key={idx} onClick={() => onClick(dataArr[idx])}>
+				<Text key={idx} onClick={() => onClick(dataArr[idx])} isOn={selectedEl === dataArr[idx]}>
 					{nameArr ? nameArr[idx] : el}
 				</Text>
 			))}
