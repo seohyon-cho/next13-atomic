@@ -17,7 +17,7 @@
 		}
 		&::-webkit-scrollbar-thumb {
 			border-radius: 2px;
-			background: hotpink;
+			background: var(--point);
 		}
 
 		// 각 페이지별 root 태그 (main / sub 로 나누기 위함임.)
@@ -29,7 +29,14 @@
 		// (sub 서브페이지 전용)
 		> section {
 			width: 80vw;
+			padding-top: 60px;
 			margin: 0 auto;
+
+			h1 {
+				font-size: 3rem;
+				font-weight: 400;
+				font-family: var(--font-nanum);
+			}
 		}
 	}
 }

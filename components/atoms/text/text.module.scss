@@ -4,8 +4,12 @@
 	font-weight: 400;
 	font-size: 1rem;
 
+	&:hover {
+		color: var(--point);
+	}
+
 	&.on {
-		color: hotpink;
+		color: var(--point);
 	}
 
 	a {
@@ -13,22 +17,23 @@
 		color: inherit;
 		font-family: inherit;
 		font-weight: inherit;
+		&:hover {
+			color: var(--point);
+		}
 	}
 
 	&.logo {
 		font-family: var(--font-orbitron);
 		font-weight: 600;
-		color: #111;
 		font-size: 1.8rem;
 	}
 
 	&.title1 {
-		color: #333;
 		font-size: 1.2rem;
 	}
 
 	&.slogan {
-		color: hotpink;
+		color: var(--point);
 		font-size: 20vw;
 	}
 }
