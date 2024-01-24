@@ -8,8 +8,9 @@ export default function Pages() {
 	];
 	const nameArr = fetchData.map(data => data.name);
 
-	const handleClick = ({ data, idx }) => {
-		console.log(data[idx]);
+	//함수정의할때 추후 e객체를 받아서 활용하겠다는 정의문
+	const handleClick = ({ data, idx, e }) => {
+		console.dir(e.target);
 	};
 	return (
 		<section>
