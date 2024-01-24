@@ -5,11 +5,11 @@ import Navbar from '@/components/molecules/navbar/Navbar';
 
 export default function Header() {
 	return (
-		<section className={clsx(styles.header)}>
+		<header className={clsx(styles.header)}>
 			<Text url={'/'} styleType={'logo'}>
 				DCODELAB
 			</Text>
-			<Navbar data={['Find Recipe', 'My Favorait']} />
-		</section>
+			<Navbar data={['Find Recipe', 'My Favorite']} />
+		</header>
 	);
 }

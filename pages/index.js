@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import styles from './Home.module.scss';
 import axios from 'axios';
 import Image from 'next/image';
-import Layout from '@/components/template/layout/Layout';
 
 export default function Home({ meals, category }) {
 	return (
@@ -12,22 +11,20 @@ export default function Home({ meals, category }) {
 				<title>Main Page</title>
 			</Head>
 
-			<div className={clsx(styles.main)}>
-				<Layout>
-					<h1>Main Page</h1>
-					<h2>{category}</h2>
+			<section className={clsx(styles.main)}>
+				<h1>Main Page</h1>
+				<h2>{category}</h2>
 
-					{meals.map((data, idx) => {
-						if (idx >= 5) return null;
-						return (
-							<article key={idx}>
-								<Image src={data.strMealThumb} alt={data.strMeal} width={100} height={100} priority />
-								<h3>{data.strMeal}</h3>
-							</article>
-						);
-					})}
-				</Layout>
-			</div>
+				{meals.map((data, idx) => {
+					if (idx >= 5) return null;
+					return (
+						<article key={idx}>
+							<Image src={data.strMealThumb} alt={data.strMeal} width={100} height={100} priority />
+							<h3>{data.strMeal}</h3>
+						</article>
+					);
+				})}
+			</section>
 		</>
 	);
 }
