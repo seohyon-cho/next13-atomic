@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './text.module.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Nanum_Myeongjo, Orbitron } from 'next/font/google';
 
@@ -18,12 +18,11 @@ const orbitron = Orbitron({
 	variable: '--font-orbitron'
 });
 
-export default function Text({ children, url, tagName = 'p', styleType, className, isOn = false, onClick, data, idx }) {
-	console.log(isOn);
+export default function Text({ children, url, tagName = 'p', styleType, className, isOn = false, onClick }) {
 	return React.createElement(
 		tagName,
 		{
-			onClick: e => onClick({ e, idx, data }), //props로 전달받은 호출(이때만들어진 e객체를 함수 전달)
+			onClick: onClick, //props로 전달받은 호출(이때만들어진 e객체를 함수 전달)
 			className: clsx(styles.text, nanum.variable, orbitron.variable, styles[styleType], className, isOn && styles.on)
 		},
 		url ? React.createElement(Link, { href: url }, children) : children
