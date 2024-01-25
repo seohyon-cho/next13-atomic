@@ -16,7 +16,9 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 				<thead>
 					<tr>
 						{isCount && <th scope='col'>No</th>}
-						{Object.keys(data[0]).map(key => (
+						{/* 만약의 객체[key] 구문 활용 시, 처음 마운트될 때에는 해당 값이 없을 시 오류가 뜸.  */}
+						{/* 이 구조에서는 옵셔널 체이닝을 쓸 수 없기 때문에, 아래처럼 '객체[key] || {}' 와 같은 식으로 구문 작성 (undefined 뜨는 것 방지하기 위해서) */}
+						{Object.keys(data[0] || {}).map(key => (
 							<th key={key}>{key}</th>
 						))}
 					</tr>

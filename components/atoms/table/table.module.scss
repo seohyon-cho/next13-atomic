@@ -1,2 +1,10 @@
 .table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid rgba(var(--textCode), 0.3);
+
+	th,
+	td {
+		padding: 10px 20px;
+	}
 }
