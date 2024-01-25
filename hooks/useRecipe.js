@@ -40,6 +40,7 @@ const getRecipeById = async ({ queryKey }) => {
 	const { data } = await axios.get(`/lookup.php?i=${queryKey[1]}`);
 	return data?.meals?.[0] || '';
 };
+
 export const useRecipeById = DebounceId => {
 	return useQuery(['RecipeById', DebounceId], getRecipeById, {
 		refetchOnMount: false,
@@ -48,6 +49,20 @@ export const useRecipeById = DebounceId => {
 		staleTime: 1000 * 60 * 60 * 24
 	});
 };
+/*
+위의 커스텀훅 구문을 아래와같이 표현가능 (react-query5버전에서는 아래의 구문을 표준으로 지정)
+export const useRecipeById2 = DebouncedId => {
+	const query = {
+		queryKey: ['RecipeById', DebouncedId],
+		queryFn: getRecipeById,
+		refetchOnMount: false,
+		refetchOnWindowFocus: false,
+		cacheTime: 1000 * 60 * 60 * 24,
+		staleTime: 1000 * 60 * 60 * 24
+	};
+	return useQuery(query);
+};
+*/
 
 export const useRecipesByIds = arr => {
 	//배열값을 인수로 받아서 반복을 돌면서 쿼리키와 api함수를 객체를 배열로 묶어 리턴
@@ -61,6 +76,6 @@ export const useRecipesByIds = arr => {
 	}));
 
 	//useQueries : 복수개의 useQuery를 병렬식으로 동시에 작업 실행
-	//사용방법: useQueries([useQuery, useQuery, useQuery])
+	//사용방법: useQueries([query, query, query])
 	return useQueries({ queries });
 };
