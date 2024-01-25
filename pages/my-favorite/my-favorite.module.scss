@@ -1,2 +1,12 @@
 .myFavorite {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	h1 {
+		width: 100%;
+	}
+	.favoriteCard {
+		width: 30%;
+	}
 }
