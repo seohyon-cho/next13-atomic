@@ -28,7 +28,10 @@ export default function Detail() {
 			});
 			setTableData(ingredients);
 
-			const instructions = data.strInstructions.split('\r\n');
+			const instructions = data.strInstructions
+				.split('\r\n') // 기존 문자열에서, \r\n 을 구분자로 하여 문자열을 배열로 나눔.
+				.map(txt => (txt.includes('\t') ? txt.split('.\t')[1] : txt)) // 나눈 문자 안에서, .\t 가 포함되어있다면 해당 기호를 구분자로 하여 뒷 부분만 가져옴.
+				.filter(txt => txt !== ''); // 분리된 배열에서 혹시 빈 문자열이 있으면 배열에서 제거. (값이 없는 것은 제거)
 			console.log(instructions);
 			setListData(instructions);
 		}

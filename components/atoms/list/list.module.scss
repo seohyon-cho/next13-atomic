@@ -1,5 +1,7 @@
 .list {
 	li {
+		color: var(--text);
+		margin-bottom: 20px;
 		&.on {
 			color: var(--point);
 		}
