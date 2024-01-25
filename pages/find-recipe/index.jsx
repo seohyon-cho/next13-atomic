@@ -34,7 +34,7 @@ export default function FindRecipe({ categories }) {
 		// 검색어가 없으면, Search를 비우고, 카테고리의 기본 값 다시 출력.
 		else {
 			setSearch('');
-			// setSelected(categories[0].strCategory);
+			setSelected(categories[0].strCategory);
 		}
 	}, [Search]);
 
@@ -76,7 +76,7 @@ export default function FindRecipe({ categories }) {
 					Try Another Keyword.
 				</Text>
 			)}
-			{Search === '' && Selected === '' && <Text>There is no keyword your Input...</Text>}
+			{/* {Search === '' && Selected === '' && <Text>There is no keyword your Input...</Text>} */}
 		</section>
 	);
 }
