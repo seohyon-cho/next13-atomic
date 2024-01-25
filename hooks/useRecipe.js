@@ -76,6 +76,9 @@ export const useRecipesByIds = arr => {
 	}));
 
 	//useQueries : 복수개의 useQuery를 병렬식으로 동시에 작업 실행
+	// hook 실행 시, useQuery가 결과값을 반환하는 것이 아닌, 쿼리 요청을 따로 객체 형태로 분리해서 최종적으로 useQueries가 전달 받아 실행하기 때문에,
+	// 내부 로직에 의해 변경될 필요가 없는 query에 대한 요청은 실행하지 않음.
+	// 사용자 이벤트에 의해서, 그룹으로 묶여있는 query 요청 중에 변경되는 query에 대한 요청사항만 실행하고 싶을 때 효율적.
 	//사용방법: useQueries([query, query, query])
 	return useQueries({ queries });
 };
