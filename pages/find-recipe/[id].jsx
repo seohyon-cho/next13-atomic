@@ -17,10 +17,27 @@ export default function Detail() {
 	const { id } = router.query;
 	const { data, isSuccess } = useRecipeById(id);
 
+	// 즐겨찾기 버튼 토글 시, 로컬 저장소에 현재 params로 들어온 레시피 아이디값을 저장해주는 함수.
 	const handleSave = () => {
-		setSaved(!Saved);
-		console.log(Saved);
+		const savedRecipe = JSON.parse(localStorage.getItem('favorite')) || [];
+
+		if (!Saved) {
+			savedRecipe.push(data.idMeal);
+			localStorage.setItem('favorite', JSON.stringify(savedRecipe));
+			setSaved(true);
+		} else {
+			// 배열.splice(삭제할 배열의 순번 위치, 삭제할 갯수)
+			savedRecipe.splice(savedRecipe.indexOf(data.idMeal), 1);
+			localStorage.setItem('favorite', JSON.stringify(savedRecipe));
+			setSaved(false);
+		}
 	};
+
+	// 사용자 이벤트가 아닌, 해당 페이지 컴포넌트가 마운트되었을 때, 로컬저장소의 값을 비교해서 (즐겨찾기 유무에 따라) 즐겨찾기 버튼의 상태 변경을 분기처리하는 함수
+	useEffect(() => {
+		const savedRecipe = JSON.parse(localStorage.getItem('favorite')) || [];
+		savedRecipe.includes(id) ? setSaved(true) : setSaved(false);
+	}, [id]);
 
 	useEffect(() => {
 		if (data) {
