@@ -10,6 +10,7 @@
 		color: #ccc;
 		height: 100%;
 		overflow-y: auto;
+		overflow-x: hidden;
 
 		// 그 내부의 커스텀 스크롤 바 설정
 		&::-webkit-scrollbar {
@@ -29,13 +30,40 @@
 		// (sub 서브페이지 전용)
 		> section {
 			width: 80vw;
-			padding-top: 60px;
 			margin: 0 auto;
 
 			h1 {
+				width: 100%;
 				font-size: 5rem;
 				font-weight: 400;
 				font-family: var(--font-nanum);
+				margin-top: 50px;
+				margin-bottom: 50px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tabletS) {
+	.layout {
+		padding: 17vh 0 4vh;
+		.content {
+			> section {
+				h1 {
+					font-size: 4rem;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.layout {
+		.content {
+			> section {
+				h1 {
+					font-size: 3rem;
+				}
 			}
 		}
 	}

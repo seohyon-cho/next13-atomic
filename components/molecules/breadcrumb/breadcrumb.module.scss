@@ -2,12 +2,18 @@
 	width: 80vw;
 	display: flex;
 	margin: 0 auto;
+	margin-bottom: 20px;
 	gap: 10px;
 	justify-content: right;
-	opacity: 0.8;
 
 	span {
 		transform: scale(0.7);
 		opacity: 0.5;
+	}
+}
+
+@media screen and (max-width: $tabletS) {
+	.breadcrumb {
+		justify-content: flex-start;
 	}
 }

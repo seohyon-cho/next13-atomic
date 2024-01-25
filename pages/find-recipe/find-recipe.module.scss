@@ -3,19 +3,36 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	> h1 {
-		width: 100%;
-	}
 	.category {
-		margin: 40px 0 20px;
+		margin-bottom: 20px;
 		width: 100%;
-	}
-	> h2 {
-		width: 100%;
-		margin-bottom: 50px;
 	}
 	.foodItem {
-		width: 22%;
+		width: 30%;
 		margin-bottom: 120px;
+	}
+}
+
+@media screen and (max-width: $tabletB) {
+	.findRecipe {
+		.foodItem {
+			width: 30%;
+		}
+	}
+}
+
+@media screen and (max-width: $tabletS) {
+	.findRecipe {
+		.foodItem {
+			width: 47%;
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.findRecipe {
+		.foodItem {
+			width: 100%;
+		}
 	}
 }

@@ -20,9 +20,8 @@ export default function FindRecipe({ categories }) {
 
 	return (
 		<section className={clsx(styles.findRecipe)}>
-			<h1>Find Recipe</h1>
 			<Category dataArr={Names} selectedEl={Selected} onClick={handleClick} className={clsx(styles.category)} />
-			<h2>{Selected}</h2>
+			<h1>{Selected}</h1>
 			{isSuccess &&
 				dataByCategory.map(data => {
 					return <Card key={data.idMeal} imgSrc={data.strMealThumb} txt={data.strMeal} className={clsx(styles.foodItem)} />;

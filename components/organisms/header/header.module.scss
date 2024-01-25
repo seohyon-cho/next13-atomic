@@ -5,6 +5,23 @@
 	left: 0;
 	z-index: 3;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	padding: 5vh 10vw;
+}
+
+@media screen and (max-width: $tabletS) {
+	.header {
+		margin-bottom: 70px;
+
+		h1 {
+			width: 100%;
+		}
+
+		ul {
+			width: 100%;
+			margin-top: 20px;
+			font-size: 1.2rem;
+		}
+	}
 }
