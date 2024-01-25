@@ -3,7 +3,7 @@
 	height: 100vh;
 	overflow: hidden;
 	background: #111;
-	padding: 15vh 0 4vh;
+	padding: 100px 0 60px;
 
 	// header를 제외한 컨텐츠 영역
 	.content {
@@ -11,6 +11,8 @@
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
+		position: relative;
+		z-index: 4;
 
 		// 그 내부의 커스텀 스크롤 바 설정
 		&::-webkit-scrollbar {
