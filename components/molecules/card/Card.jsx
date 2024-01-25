@@ -8,7 +8,7 @@ export default function Card({ imgSrc, txt, url, styleType, className }) {
 		<article className={clsx(styles.card, className, styles[styleType])}>
 			<Pic imgSrc={imgSrc} url={url} />
 			{/* txt 값이 전달될 때만 <Text /> 컴포넌트 만들도록 처리. */}
-			{txt && <Text>{txt}</Text>}
+			{txt && <Text url={url}>{txt}</Text>}
 		</article>
 	);
 }
