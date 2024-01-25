@@ -18,6 +18,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 						{isCount && <th scope='col'>No</th>}
 						{/* 만약의 객체[key] 구문 활용 시, 처음 마운트될 때에는 해당 값이 없을 시 오류가 뜸.  */}
 						{/* 이 구조에서는 옵셔널 체이닝을 쓸 수 없기 때문에, 아래처럼 '객체[key] || {}' 와 같은 식으로 구문 작성 (undefined 뜨는 것 방지하기 위해서) */}
+						{/* 아래 코드에서, 값이 undefined가 뜰 때 꼭 {} (빈 객체) 로 설정해야 오류가 발생하지 않는 이유 : keys()라는 method 자체가 파라미터 값으로 무조건 객체만 들어올 수 있도록 타입이 강제되어 있기 때문임. => undefined 허용을 안 하므로 타입에 맞게 빈 객체를 넣는 것.  */}
 						{Object.keys(data[0] || {}).map(key => (
 							<th key={key}>{key}</th>
 						))}
@@ -49,8 +50,9 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 */
 
 export function TableX({ data, title, className, reverse = false }) {
+	data = reverse ? [...data].reverse() : [...data];
 	// 키값만 배열로 추출
-	const keys = Object.keys(data[0]); // ['name', 'age']
+	const keys = Object.keys(data[0]) || {}; // ['name', 'age']
 
 	return (
 		<>
