@@ -5,7 +5,11 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 export default function Breadcrumb({ divider = '/' }) {
-	const pathArr = useRouter().asPath.split('/');
+	const router = useRouter();
+	const pathArr = router.asPath.split('/');
+	// path 값에서 만약 쿼리스트링 값이 있으면, 해당 쿼리의 name값만 따로 추출하여, 이 name값을 recipeName에 담아줌.
+	const { name: recipeName } = router.query;
+	console.log(recipeName);
 
 	// 변환할 문자원본 (txt) 과 제거할 특수문자 (spc)를 인수로 받아서, 특수문자를 제거한 뒤 Capitalize하여 반환하는 함수 (화면에 출력될 메뉴 카테고리명에 활용)
 
@@ -14,7 +18,7 @@ export default function Breadcrumb({ divider = '/' }) {
 		txt = txt.includes(spc)
 			? txt
 					.split(spc)
-					.map((el) => el.charAt(0).toUpperCase() + el.slice(1))
+					.map(el => el.charAt(0).toUpperCase() + el.slice(1))
 					.join(' ')
 			: txt;
 		return txt;
@@ -30,7 +34,8 @@ export default function Breadcrumb({ divider = '/' }) {
 				if (idx === pathArr.length - 1) {
 					return (
 						<Text key={idx} tagName={'strong'} isOn>
-							{displayName}
+							{/* 마지막 path 경로일 때, recipeName 이라는 값이 query 값이 있으면 해당 값을 breancrumb에 출력. 없으면 그냥 마지막 path 경로명 출력. */}
+							{recipeName ? recipeName : displayName}
 						</Text>
 					);
 				} else {
