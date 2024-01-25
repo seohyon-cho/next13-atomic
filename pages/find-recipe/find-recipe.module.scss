@@ -3,9 +3,23 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	.controller {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
 	.category {
 		margin-bottom: 20px;
-		width: 100%;
+	}
+	.searchBox {
+		button {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 1rem;
+		}
 	}
 	.foodItem {
 		width: 23%;

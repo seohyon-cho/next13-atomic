@@ -5,6 +5,7 @@ import Category from '@/components/molecules/category/Category';
 import { useState } from 'react';
 import { useRecipeByCategory } from '@/hooks/useRecipe';
 import Card from '@/components/molecules/card/Card';
+import SearchBar from '@/components/molecules/searchBar/SearchBar';
 
 export default function FindRecipe({ categories }) {
 	const [Names, setNames] = useState(categories.map(el => el.strCategory));
@@ -20,7 +21,11 @@ export default function FindRecipe({ categories }) {
 
 	return (
 		<section className={clsx(styles.findRecipe)}>
-			<Category dataArr={Names} selectedEl={Selected} onClick={handleClick} className={clsx(styles.category)} />
+			<div className={clsx(styles.controller)}>
+				<Category dataArr={Names} selectedEl={Selected} onClick={handleClick} className={clsx(styles.category)} />
+				<SearchBar placeholder={'Search Recipe'} className={clsx(styles.searchBox)} />
+			</div>
+
 			<h1>{Selected}</h1>
 			{isSuccess &&
 				dataByCategory.map(data => {

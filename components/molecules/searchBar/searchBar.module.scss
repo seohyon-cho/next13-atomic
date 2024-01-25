@@ -1,4 +1,13 @@
 .searchBar {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	position: relative;
+
+	input {
+		width: 80px;
+	}
+
 	button {
 		border: none;
 		background: transparent;
