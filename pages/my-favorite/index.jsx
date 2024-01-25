@@ -14,7 +14,6 @@ export default function MyFavorite() {
 	}, []);
 
 	const result = useRecipesByIds(SavedId);
-	console.log(result);
 
 	return (
 		<section className={clsx(styles.myFavorite)}>

@@ -9,7 +9,6 @@ export default function Breadcrumb({ divider = '/' }) {
 	const pathArr = router.asPath.split('/');
 	// path 값에서 만약 쿼리스트링 값이 있으면, 해당 쿼리의 name값만 따로 추출하여, 이 name값을 recipeName에 담아줌.
 	const { name: recipeName } = router.query;
-	console.log(recipeName);
 
 	// 변환할 문자원본 (txt) 과 제거할 특수문자 (spc)를 인수로 받아서, 특수문자를 제거한 뒤 Capitalize하여 반환하는 함수 (화면에 출력될 메뉴 카테고리명에 활용)
 
